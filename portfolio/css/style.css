@@ -22,21 +22,16 @@ body {
     font-size: 60px;
 }
 
-.section-title {
-    font-size: 40px;
-    color: #BDAE82;
-}
-
 .container {
     width: 1440px;
     margin: 0 auto;
+    background: #000000;
 }
 
 .header-container {
     background-image: url('../assets/img/bg.jpg');
     background-repeat: no-repeat;
     background-position: center 0;
-
 }
 
 .header-inner {
@@ -47,12 +42,12 @@ body {
 }
 
 .logo-block {
-    height: 30px;
+    height: 50px;
 }
 
 .logo {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     fill: #FFFFFF;
 }
 
@@ -136,7 +131,7 @@ body {
 }
 
 .hero-button {
-    width: 229px;
+    width: 220px;
     height: 55px;
     border: 0;
     background: #BDAE82;
@@ -148,6 +143,82 @@ body {
 .hero-button:hover {
     color: #FFFFFF;
 }
+
+.title-wrapper {
+    width: 700px;
+    margin: auto;
+}
+
+.section-title {
+    font-size: 40px;
+    color: #BDAE82;
+    margin-top: 100px;
+    margin-bottom: 60px;
+    text-align: center;
+    background-image: linear-gradient(to top, #000 39px, #BDAE82 39px, #BDAE82 41px, #000 41px);
+}
+
+.title-text {
+    background-color: #000;
+    padding: 0 20px;
+}
+
+.skills-items {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
+
+.skill-item {
+    width: 320px;
+    background-position: center top;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    margin-bottom: 10px;
+}
+
+.skill-title {
+    font-weight: 700;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.skill-text {
+    font-size: 18px;
+    text-align: center;
+}
+
+.skill-img-block {
+    height: 50px;
+}
+
+.camera-svg {
+    width: 62px; 
+    height: 50px;
+}
+
+.video-svg {
+    width: 60px; 
+    height: 50px;
+}
+
+.image-svg {
+    width: 66px; 
+    height: 50px;
+}
+
+.mic-svg {
+    width: 32px; 
+    height: 50px;
+}
+
+
 
 
 
