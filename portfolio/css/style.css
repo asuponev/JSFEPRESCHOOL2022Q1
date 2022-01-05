@@ -255,9 +255,29 @@ body {
     height: 560px;
 }
 
-.portfolio-photo {
-    width: 450px;
-    height: 560px;
+.video-block {
+   padding: 0 20px;
+}
+
+.video-player {
+    background-image: url(../assets/img/video-player.jpg);
+    background-size:cover;
+    width: 1400px;
+    height: 705px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.play-hover {
+    width: 129.86px;
+    height: 130px;
+    fill: #FFFFFF;
+}
+
+.play-hover:hover {
+    fill: #BDAE82;
 }
 
 
