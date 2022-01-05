@@ -74,13 +74,13 @@ body {
     margin-right: 31px;
 }
 
-.nav-link {
+.link {
     text-decoration: none;
     color: #FFFFFF;
     line-height: 2.5;
 }
 
-.nav-link:hover {
+.link:hover {
     color: #BDAE82;
 }
 
@@ -376,6 +376,39 @@ body {
   font-family: inherit;
   color: #bdae82;
   font-size: 20px;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 150px;
+    padding: 0 20px;
+}
+
+.footer-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: space-between;
+    height: 32px;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-svg {
+    width: 32px;
+    height: 32px;
+    fill: #FFFFFF
+}
+
+.social-svg:hover {
+    fill: #BDAE82;
 }
 
 
