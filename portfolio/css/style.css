@@ -29,7 +29,7 @@ body {
 }
 
 .header-container {
-    background-image: url('../assets/img/bg.jpg');
+    background-image: url('../assets/img/hero-bg.jpg');
     background-repeat: no-repeat;
     background-position: center 0;
 }
@@ -116,7 +116,7 @@ body {
 
 .hero-container {
     height: 820px;
-    background-image: url('../assets/img/bg.jpg');
+    background-image: url('../assets/img/hero-bg.jpg');
     background-position: center -90px;
     background-repeat: no-repeat;
 }
@@ -216,6 +216,48 @@ body {
 .mic-svg {
     width: 32px; 
     height: 50px;
+}
+
+.portfolio-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 60px;
+}
+
+.portfolio-button {
+    width: 220px;
+    height: 55px;
+    color: #BDAE82;
+    border: 1px solid #BDAE82;
+    background: #000000;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.portfolio-button:focus {
+    color: #000000;
+    border: 1px solid #BDAE82;
+    background:  #BDAE82;
+}
+
+.portfolio-photos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    padding: 0 20px;
+}
+
+.photo-card {
+    width: 450px;
+    height: 560px;
+}
+
+.portfolio-photo {
+    width: 450px;
+    height: 560px;
 }
 
 
