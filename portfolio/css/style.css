@@ -1,7 +1,8 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    padding: 0;    
+    padding: 0;
+    scroll-behavior: smooth;    
   }
 
 body {
@@ -26,6 +27,10 @@ body {
     width: 1440px;
     margin: 0 auto;
     background: #000000;
+}
+
+.container-padding {
+    padding: 0 20px;
 }
 
 .header-container {
@@ -82,6 +87,7 @@ body {
 
 .link:hover {
     color: #BDAE82;
+    transition-duration: .3s;
 }
 
 .switch-lang {
@@ -112,6 +118,7 @@ body {
 
 .switch-link:hover {
     color: #BDAE82;
+    transition-duration: .3s;
 }
 
 .hero-container {
@@ -142,6 +149,7 @@ body {
 
 .active-button:hover {
     color: #FFFFFF;
+    transition-duration: .3s;
 }
 
 .title-wrapper {
@@ -167,7 +175,6 @@ body {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 0 20px;
 }
 
 .skill-item {
@@ -238,12 +245,14 @@ body {
 
 .portfolio-button:hover {
     color: #FFFFFF;
+    transition-duration: .3s;
 }
 
-.portfolio-button:focus {
+.btn-on, .portfolio-button:focus {
     color: #000000;
     border: 1px solid #BDAE82;
     background:  #BDAE82;
+    transition-duration: .3s;
 }
 
 .portfolio-photos {
@@ -251,16 +260,11 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     gap: 25px;
-    padding: 0 20px;
 }
 
 .photo-card {
     width: 450px;
     height: 560px;
-}
-
-.video-block {
-   padding: 0 20px;
 }
 
 .video-player {
@@ -274,14 +278,25 @@ body {
     align-items: center;
 }
 
+.play-hover-btn {
+    width: 130px;
+    height: 130px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden; 
+}
+
 .play-hover {
-    width: 129.86px;
+    width: 130px;
     height: 130px;
     fill: #FFFFFF;
 }
 
 .play-hover:hover {
     fill: #BDAE82;
+    transition-duration: .3s;
 }
 
 .price-container {
@@ -383,32 +398,32 @@ body {
     justify-content: space-between;
     align-items: center;
     height: 150px;
-    padding: 0 20px;
 }
 
 .footer-info {
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: 20px;
+    width: 188px;
 }
 
 .social-links {
     display: flex;
     justify-content: space-between;
-    height: 32px;
     align-items: center;
     gap: 20px;
 }
 
 .social-svg {
+    display: block;
     width: 32px;
     height: 32px;
-    fill: #FFFFFF
+    fill: #FFFFFF;
 }
 
 .social-svg:hover {
     fill: #BDAE82;
+    transition-duration: .3s;
 }
 
 
