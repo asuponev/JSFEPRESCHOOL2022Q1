@@ -72,11 +72,7 @@ body {
 }
   
 .nav-item {
-    margin-right: 30px;
-}
-
-.nav-item:last-child {
-    margin-right: 31px;
+    margin-right: 32px;
 }
 
 .link {
