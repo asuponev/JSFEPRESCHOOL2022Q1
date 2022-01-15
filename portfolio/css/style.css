@@ -11,6 +11,7 @@ body {
     color: #FFFFFF;
     font-size: 20px;
     line-height: 2;
+    background: #000000;
 }
 
 .hero-title, .section-title, .contacts-title {
@@ -26,7 +27,6 @@ body {
 .container {
     width: 1440px;
     margin: 0 auto;
-    background: #000000;
 }
 
 .container-padding {
