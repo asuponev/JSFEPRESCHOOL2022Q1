@@ -444,6 +444,7 @@ body {
 
     .header-rigth {
         display: flex;
+        justify-content: space-between;
         gap: 20px;
     }
 
@@ -542,6 +543,30 @@ body {
 
     .burger::after {
         bottom: 0;
+    }
+
+    .switch-item {
+        margin-right: 16px;
+    }
+
+    .switch-item:last-child {
+        margin-right: 0;
+    }
+
+    .header-container {
+        background-image: url('../assets/img/hero-bg-small.jpg');
+    }
+
+    .hero-container {
+        height: 590px;
+        background-image: url('../assets/img/hero-bg-small.jpg');
+    }
+
+    .hero-inner {
+        position: relative;
+        top: 78px;
+        left: 60px;
+        padding: 0;
     }
 
     .hero-title {
