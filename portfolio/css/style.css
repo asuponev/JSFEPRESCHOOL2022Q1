@@ -632,6 +632,12 @@ body {
         margin-bottom: 40px;
     }
 
+    .portfolio-items {
+        width: 450px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
 }
 
 
