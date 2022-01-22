@@ -1,13 +1,19 @@
 (function () {
-    const burgerItem = document.querySelector('.burger');
-    const menu = document.querySelector('.nav');
-    const menuCloseItem = document.querySelector('.nav-close');
-    burgerItem.addEventListener('click', () => {
-        menu.classList.add('nav_open')
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.nav');
+    const navClose = document.querySelector('.nav-close');
+    const navItems = document.querySelectorAll('.nav-item');
+    burger.addEventListener('click', () => {
+        nav.classList.add('nav_open')
     });
-    menuCloseItem.addEventListener('click', () => {
-        menu.classList.remove('nav_open')
+    navClose.addEventListener('click', () => {
+        nav.classList.remove('nav_open')
     });
+    for (let navItem of navItems) {
+        navItem.addEventListener('click', () => {
+            nav.classList.remove('nav_open')
+        });
+    }
 }());
 
 
