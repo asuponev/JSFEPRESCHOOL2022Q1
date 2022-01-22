@@ -440,6 +440,7 @@ body {
 
     .header-inner {
         padding: 20px 64px;
+        height: 100%;
     }
 
     .header-rigth {
@@ -452,7 +453,7 @@ body {
         position: fixed;
         top: 0;
         right: 0;
-        width: 80%;
+        width: 620px;
         height: 100%;
         background-color: var(--color-black);
         z-index: 10;
@@ -558,7 +559,7 @@ body {
     }
 
     .hero-container {
-        height: 590px;
+        height: 500px;
         background-image: url('../assets/img/hero-bg-small.jpg');
     }
 
@@ -581,8 +582,56 @@ body {
     }
 
     .title-wrapper {
-    width: 364px;
+        width: 364px;
     }
+
+    .section-title {
+        margin-top: 80px;
+        margin-bottom: 50px;
+        height: 80px;
+    }
+
+    .section-title-skills {
+        margin-bottom: 36px;
+    }
+
+    .title-text {
+        font-size: 32px;
+        padding: 0 21px;
+    }
+
+    .skills-items {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 9px 44px 40px 40px;
+    }
+
+    .skill-item {
+        width: 300px;
+        background-position: center top;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;
+        margin-bottom: 36px;
+    }
+
+    .skill-item-last {
+        margin-bottom: 0;
+    }
+
+    .skill-title {
+        margin-top: 30px;
+        line-height: 2;
+    }
+
+    .skill-text {
+        margin-bottom: 40px;
+    }
+
 }
 
 
