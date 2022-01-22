@@ -638,6 +638,25 @@ body {
         margin-right: auto;
     }
 
+    #video .container-padding {
+        padding: 0;
+    }
+
+    .video-player {
+        background-image: url(../assets/img/video-player-small.jpg);
+        height: 418px;
+    }
+
+    .play-hover-btn {
+        width: 65px;
+        height: 65px;
+    }
+
+    .play-hover {
+        width: 65px;
+        height: 65px;
+    }
+
 }
 
 
