@@ -597,6 +597,7 @@ body {
 
     .title-text {
         font-size: 32px;
+        line-height: 2.5;
         padding: 0 21px;
     }
 
@@ -657,6 +658,39 @@ body {
         height: 65px;
     }
 
+    .price-container {
+        gap: 50px;
+        margin-bottom: 80px;
+    }
+
+    .price-value {
+        margin-bottom: 20px;
+    }
+
+    .price-card {
+        line-height: 2;
+        width: 420px;
+        height: 505px;
+    }
+
+    .contacts-container {
+        height: 600px;
+        background-image: url('../assets/img/contacts-bg-small.jpg');
+    }
+
+    .contacts-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: auto;
+        margin-top: 60px;
+        padding: 0;
+    }
+
+    .contacts-title {
+        font-size: 32px;
+        line-height: 2;
+    }
 }
 
 
