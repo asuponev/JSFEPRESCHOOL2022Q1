@@ -3,11 +3,18 @@
     const nav = document.querySelector('.nav');
     const navClose = document.querySelector('.nav-close');
     const navItems = document.querySelectorAll('.nav-item');
+    const shadow = document.querySelector('.shadow');
     burger.addEventListener('click', () => {
         nav.classList.add('nav_open')
     });
+    burger.addEventListener('click', () => {
+        shadow.classList.add('shadow-enabled')
+    });
     navClose.addEventListener('click', () => {
         nav.classList.remove('nav_open')
+    });
+    navClose.addEventListener('click', () => {
+        shadow.classList.remove('shadow-enabled')
     });
     for (let navItem of navItems) {
         navItem.addEventListener('click', () => {
