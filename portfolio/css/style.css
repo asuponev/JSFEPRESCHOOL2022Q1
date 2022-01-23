@@ -470,7 +470,7 @@ body {
         top: 0;
         width: 620px;
         height: 8500px;
-        display: none;
+        /* display: none; */
         background-color: var(--color-black);
         z-index: 10;
         right: -620px;
@@ -478,8 +478,8 @@ body {
     }
 
     .nav-open {
+        /* display: block; */
         right: 0;
-        display: block;
     }
 
     .nav-list {
