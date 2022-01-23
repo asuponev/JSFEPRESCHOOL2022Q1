@@ -470,6 +470,7 @@ body {
         top: 0;
         width: 620px;
         height: 8500px;
+        display: none;
         background-color: var(--color-black);
         z-index: 10;
         right: -620px;
@@ -730,6 +731,52 @@ body {
 
 @media (max-width: 620px) {
     .nav {
+        width: 100%;
+    }
+}
+
+@media (max-width: 450px) {
+    .header-inner {
+        padding: 20px;
+    }
+    
+    .hero-inner {
+        left: 20px;
+    }
+
+    .portfolio-items {
+        width: 100%;
+    }
+    
+    .portfolio-photos {
+        width: 100%;
+    }
+
+    .photo-card img {
+        width: 100%;
+    }
+
+    .contacts-inner {
+        width: 100%;
+    }
+
+    .input {
+        width: 100%;
+    }
+
+    .input-textarea {
+        width: 100%;
+    }
+}
+
+@media (max-width: 390px) {
+    .hero-text {
+        width: 100%;
+    }
+}
+
+@media (max-width: 364px) {
+    .title-wrapper {
         width: 100%;
     }
 }
