@@ -466,9 +466,9 @@ body {
     }
 
     .nav {
-        position: absolute;
+        position: fixed;
         top: 0;
-        width: 0;
+        width: 620px;
         height: 8500px;
         /* display: none; */
         background-color: var(--color-black);
@@ -480,7 +480,7 @@ body {
     .nav-open {
         /* display: block; */
         right: 0;
-        width: 620px;
+        position: absolute;
     }
 
     .nav-list {
@@ -496,14 +496,6 @@ body {
 
     .nav-item {
         width: 100%;
-    }
-
-    .nav-list .nav-item {
-        display: none;
-    }
-
-    .nav-open .nav-list .nav-item {
-        display: block;
     }
 
     .nav-item .link {
