@@ -524,6 +524,11 @@ body {
         z-index: 11;
     }
 
+    .burger:hover span {
+        background: var(--color-gold);
+        transition: 0.3s;
+    }
+
     .burger .line:nth-child(2) {
         top: 13px;
     }
