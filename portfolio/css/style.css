@@ -52,6 +52,13 @@ body {
     padding: 20px;
 }
 
+.header-rigth {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
 .logo-block {
     height: 50px;
 }
@@ -64,6 +71,24 @@ body {
 
 .logo:hover {
     fill: var(--color-gold);
+}
+
+.switch-theme-block {
+    display: block;
+    background: none;
+    border: none;
+    height: 45px;
+}
+
+.switch-theme {
+    width: 45px;
+    height: 45px;
+    fill: var(--color-white);
+}
+
+.switch-theme:hover {
+    fill: var(--color-gold);
+    cursor: pointer;
 }
 
 .nav {
@@ -458,12 +483,6 @@ body {
         height: 100%;
     }
 
-    .header-rigth {
-        display: flex;
-        justify-content: space-between;
-        gap: 20px;
-    }
-
     .shadow {
         display: none;
         position: absolute;
@@ -830,5 +849,9 @@ body {
 @media (max-width: 350px) {
     .price-card {
         padding: 10px;
+    }
+
+    .switch-item {
+        margin-right: 8px;
     }
 }
