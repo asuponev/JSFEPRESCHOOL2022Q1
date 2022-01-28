@@ -6,7 +6,7 @@
     const portfolioImages = document.querySelectorAll('.photo-card');
     const portfolioBtns = document.querySelector('.portfolio-buttons');
     const btnTheme = document.querySelector('.button-theme');
-    const forLightElements = ['body', '.section-title', '.hero-inner', '.portfolio-button', '.btn-on', '.title-text', '.nav', '.nav-item','.burger']
+    const forLightElements = ['body', 'footer', '.section-title', '.hero-inner', '.portfolio-button', '.btn-on', '.title-text', '.nav', '.nav-item','.burger']
 
     // Burger-menu
     burger.addEventListener('click', () => {
@@ -56,18 +56,36 @@
         changeTheme();
     });
     function changeTheme() {
-        btnTheme.classList.toggle('button-light-theme')
+        btnTheme.classList.toggle('button-light-theme');
         forLightElements.forEach((element) => {
             let currentElements = document.querySelectorAll(element);
             currentElements.forEach(item => {
                 if (btnTheme.classList.contains('button-light-theme')) {
-                    item.classList.add('light')
+                    item.classList.add('light');
+                    setLocalStorage('theme', 'light');
                 } else {
-                    item.classList.remove('light')
+                    item.classList.remove('light');
+                    localStorage.removeItem('theme');
                 }
             });
         });
     };
+
+    // Func for save in localStorage
+    const setLocalStorage = (key, value) => {
+        localStorage.setItem(key, value)
+    }
+
+    // Get from localStorage
+    const getLocalStorage = () => {
+        if (localStorage.getItem('lang')) {
+            changeLang(localStorage.getItem('lang'))
+        };
+        if (localStorage.getItem('theme')) {
+            changeTheme();
+        };
+    };
+    getLocalStorage()
 
 }());
 

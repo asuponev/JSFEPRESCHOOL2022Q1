@@ -497,6 +497,11 @@ body.light {
     
 }
 
+footer.light {
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
 @media (max-width: 1024px) {
     .portfolio-buttons {
         width: 450px;
