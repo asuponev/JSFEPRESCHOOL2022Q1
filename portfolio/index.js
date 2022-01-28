@@ -3,22 +3,55 @@
     const nav = document.querySelector('.nav');
     const navItems = document.querySelectorAll('.nav-item');
     const shadow = document.querySelector('.shadow');
+    const portfolioImages = document.querySelectorAll('.photo-card');
+    const portfolioBtns = document.querySelector('.portfolio-buttons');
+
+    // Burger-menu
     burger.addEventListener('click', () => {
-        nav.classList.toggle('nav-open')
+        nav.classList.toggle('nav-open');
     });
     burger.addEventListener('click', () => {
-        burger.classList.toggle('is-active')
+        burger.classList.toggle('is-active');
     });
+
+    // Added shadow under burger-menu
     burger.addEventListener('click', () => {
-        shadow.classList.toggle('shadow-enabled')
+        shadow.classList.toggle('shadow-enabled');
     });
+
+    // Closed burger-menu when clicking on the nav link
     for (let navItem of navItems) {
         navItem.addEventListener('click', () => {
-            nav.classList.remove('nav-open')
-            shadow.classList.remove('shadow-enabled')
-            burger.classList.remove('is-active')
+            nav.classList.remove('nav-open');
+            shadow.classList.remove('shadow-enabled');
+            burger.classList.remove('is-active');
         });
-    }
+    };
+
+    // Delete default class .btn-on, toggle this class when clicking and change image by data.season
+    portfolioBtns.addEventListener('click', (event) => {
+        if (event.target.classList.contains('portfolio-button')) {
+            Array.from(portfolioBtns.children).forEach(child => child.classList.remove('btn-on'));
+            event.target.classList.toggle('btn-on');
+            portfolioImages.forEach((img, index) => img.src = `./assets/img/${event.target.dataset.season}/${index + 1}.jpg`);
+        };
+    });
+
+    // Portfolio image caching
+    const preloadImages = () =>  {
+        const seasons = ['winter', 'spring', 'summer', 'autumn']
+        seasons.forEach(season => {
+            for (let i = 1; i <= 6; i++) {
+                const img = new Image();
+                img.src = `./assets/img/${season}/${i}.jpg`
+            };
+        });
+    };
+    preloadImages();
+
 }());
 
-console.log('Оценка: 85\n\n\n1. Вёрстка соответствует макету. Ширина экрана 768px\n1.1 блок <header> +6\n1.2 секция hero +6\n1.3 секция skills +6\n1.4 секция portfolio +6\n1.5 секция video +6\n1.6 секция price +6\n1.7 секция contacts +6\n1.8 блок <footer> +6\n\n\n2. Ни на одном из разрешений до 320px включительно не появляется горизонтальная полоса прокрутки.Весь контент страницы при этом сохраняется: не обрезается и не удаляется + 15\n2.1 нет полосы прокрутки при ширине страницы от 1440рх до 768рх + 5\n2.2 нет полосы прокрутки при ширине страницы от 768рх до 480рх + 5\n2.3 нет полосы прокрутки при ширине страницы от 480рх до 320рх + 5\n\n\n3. На ширине экрана 768рх и меньше реализовано адаптивное меню + 22\n3.1 при ширине страницы 768рх панель навигации скрывается, появляется бургер - иконка + 2\n3.2 при нажатии на бургер - иконку справа плавно появляется адаптивное меню, бургер - иконка изменяется на крестик + 4\n3.3 высота адаптивного меню занимает всю высоту экрана.При ширине экрана 768 - 620рх вёрстка меню соответствует макету, когда экран становится уже, меню занимает всю ширину экрана + 4\n3.4 при нажатии на крестик адаптивное меню плавно скрывается уезжая за правую часть экрана, крестик превращается в бургер - иконку + 4\n3.5 бургер - иконка, которая при клике превращается в крестик, создана при помощи css - анимаций без использования изображений + 2\n3.6 ссылки в адаптивном меню работают, обеспечивая плавную прокрутку по якорям + 2\n3.7 при клике по ссылке в адаптивном меню адаптивное меню плавно скрывается, крестик превращается в бургер - иконку + 4\n');
+console.log('Промежуточная оценка: 25\n\n',
+'1. Смена изображений в секции portfolio (25/25)\n',
+'1.1. При кликах по кнопкам Winter, Spring, Summer, Autumn в секции portfolio отображаются изображения из папки с соответствующим названием +20\n',
+'1.2. Кнопка, по которой кликнули, становится активной т.е. выделяется стилем. Другие кнопки при этом будут неактивными +5\n');

@@ -229,7 +229,7 @@ body {
     height: 50px;
 }
 
-.portfolio-items {
+.portfolio-buttons {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -239,6 +239,7 @@ body {
 }
 
 .portfolio-button {
+    display: block;
     width: 220px;
     height: 55px;
     color: var(--color-gold);
@@ -431,6 +432,14 @@ body {
 .social-svg:hover {
     fill: var(--color-gold);
     
+}
+
+@media (max-width: 1024px) {
+    .portfolio-buttons {
+        width: 450px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 @media (max-width: 768px) {
@@ -637,12 +646,6 @@ body {
         margin-bottom: 40px;
     }
 
-    .portfolio-items {
-        width: 450px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
     #video .container-padding {
         padding: 0;
     }
@@ -748,7 +751,7 @@ body {
         left: 20px;
     }
 
-    .portfolio-items {
+    .portfolio-buttons {
         width: 100%;
     }
     
