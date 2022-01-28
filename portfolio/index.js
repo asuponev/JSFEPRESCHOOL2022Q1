@@ -5,6 +5,7 @@
     const shadow = document.querySelector('.shadow');
     const portfolioImages = document.querySelectorAll('.photo-card');
     const portfolioBtns = document.querySelector('.portfolio-buttons');
+    const btnTheme = document.querySelector('.button-theme');
 
     // Burger-menu
     burger.addEventListener('click', () => {
@@ -48,6 +49,15 @@
         });
     };
     preloadImages();
+
+    // Change theme
+    btnTheme.addEventListener('click', () => {
+        changeTheme();
+    });
+
+    function changeTheme() {
+        btnTheme.classList.toggle('light-theme')
+    }
 
 }());
 
