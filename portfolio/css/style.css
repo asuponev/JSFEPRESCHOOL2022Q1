@@ -440,6 +440,11 @@ body {
         margin-left: auto;
         margin-right: auto;
     }
+
+    .video-player {
+        background-size: 100vw;
+        height: calc(100vw / 1.985815602837);
+    }
 }
 
 @media (max-width: 768px) {
@@ -650,9 +655,12 @@ body {
         padding: 0;
     }
 
+    #video .title-wrapper {
+        padding: 20px;
+    }
+
     .video-player {
         background-image: url(../assets/img/video-player-small.jpg);
-        height: 418px;
     }
 
     .play-hover-btn {
@@ -733,11 +741,17 @@ body {
 @media (max-width: 740px) {
     .skills-items {
         justify-content: center;
-}
+    }
 }
 
 @media (max-width: 620px) {
     .nav {
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .portfolio-buttons {
         width: 100%;
     }
 }
@@ -751,16 +765,13 @@ body {
         left: 20px;
     }
 
-    .portfolio-buttons {
-        width: 100%;
-    }
-    
     .portfolio-photos {
         width: 100%;
     }
 
-    .photo-card img {
-        width: 100%;
+    .photo-card {
+        width: 90%;
+        height: auto;
     }
 
     .contacts-inner {
@@ -768,22 +779,56 @@ body {
     }
 
     .input {
-        width: 100%;
+        width: calc(100% - 20px);
+        margin: 0;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
     }
 
     .input-textarea {
+        width: calc(100% - 20px);
+        margin: 0;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 420px) {
+    .price-card {
         width: 100%;
     }
 }
 
-@media (max-width: 390px) {
+@media (max-width: 410px) {
+    .hero-inner {
+        width: calc(100% - 20px);
+    }
+
     .hero-text {
-        width: 100%;
+        width: calc(100% - 20px);
+    }
+
+    .hero-title {
+        width: calc(100% - 20px);
     }
 }
 
-@media (max-width: 364px) {
+@media (max-width: 394px) {
     .title-wrapper {
-        width: 100%;
+        width: calc(100% - 20px);
+    }
+}
+
+@media (max-width: 360px) {
+    .input-textarea {
+        padding: 3px 100px 55px 20px;
+    }
+}
+
+@media (max-width: 350px) {
+    .price-card {
+        padding: 10px;
     }
 }
