@@ -6,6 +6,7 @@
     const portfolioImages = document.querySelectorAll('.photo-card');
     const portfolioBtns = document.querySelector('.portfolio-buttons');
     const btnTheme = document.querySelector('.button-theme');
+    const forLightElements = ['body', '.section-title', '.hero-inner', '.portfolio-button', '.btn-on', '.title-text', '.nav', '.nav-item','.burger']
 
     // Burger-menu
     burger.addEventListener('click', () => {
@@ -54,14 +55,30 @@
     btnTheme.addEventListener('click', () => {
         changeTheme();
     });
-
     function changeTheme() {
-        btnTheme.classList.toggle('light-theme')
-    }
+        btnTheme.classList.toggle('button-light-theme')
+        forLightElements.forEach((element) => {
+            let currentElements = document.querySelectorAll(element);
+            currentElements.forEach(item => {
+                if (btnTheme.classList.contains('button-light-theme')) {
+                    item.classList.add('light')
+                } else {
+                    item.classList.remove('light')
+                }
+            });
+        });
+    };
 
 }());
 
 console.log('Промежуточная оценка: 25\n\n',
 '1. Смена изображений в секции portfolio (25/25)\n',
-'1.1. При кликах по кнопкам Winter, Spring, Summer, Autumn в секции portfolio отображаются изображения из папки с соответствующим названием +20\n',
-'1.2. Кнопка, по которой кликнули, становится активной т.е. выделяется стилем. Другие кнопки при этом будут неактивными +5\n');
+    '1.1. При кликах по кнопкам Winter, Spring, Summer, Autumn в секции portfolio отображаются изображения из папки с соответствующим названием +20\n',
+    '1.2. Кнопка, по которой кликнули, становится активной т.е. выделяется стилем. Другие кнопки при этом будут неактивными +5\n\n',
+'3. Переключение светлой и тёмной темы (25/25)\n',
+    'Выбран вариант первый. Блоки и секции header, hero, contacts, footer остались без изменений, в оставшихся секциях цвет фона и шрифта поменялись местами согласно макету в figma - "Portfolio-white-1"\n',
+    'На страницу добавлен переключатель при клике по которому\n',
+    '3.1. Тёмная тема приложения сменяется светлой +10\n',
+    '3.2. Светлая тема приложения сменяется тёмной +10\n',
+    '3.3. После смены светлой и тёмной темы интерактивные элементы по-прежнему изменяют внешний вид при наведении и клике и при этом остаются видимыми на странице (нет ситуации с белым шрифтом на белом фоне) +5\n',
+    '\n',);
