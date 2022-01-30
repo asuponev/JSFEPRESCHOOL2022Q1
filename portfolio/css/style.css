@@ -156,6 +156,7 @@ body.light {
 
 .switch-link:hover {
     color: var(--color-gold);
+    cursor: pointer;
     transition-duration: .3s;
 }
 
