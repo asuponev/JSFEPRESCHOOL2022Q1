@@ -134,27 +134,19 @@ body.light {
     align-items: center;
     list-style-type: none;
     font-weight: 700;
-}
-
-.switch-item {
-    margin-right: 8px;
+    gap: 8px;
     color: var(--color-white);
 }
 
-.switch-item:last-child {
-    margin-right: 0;
-}
-
-.switch-link {
-    text-decoration: none;
-    color: var(--color-white);
+.switch-lang span {
+    display: block;
 }
 
 .switch-on {
     color: var(--color-gold);
 }
 
-.switch-link:hover {
+.switch-item:hover {
     color: var(--color-gold);
     cursor: pointer;
     transition-duration: .3s;
@@ -501,6 +493,8 @@ body.light {
 footer.light {
     background-color: var(--color-black);
     color: var(--color-white);
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 @media (max-width: 1024px) {
@@ -638,12 +632,8 @@ footer.light {
         background-color: var(--color-black);
     }
 
-    .switch-item {
-        margin-right: 16px;
-    }
-
-    .switch-item:last-child {
-        margin-right: 0;
+    .switch-lang {
+        gap: 16px;
     }
 
     .header-container {

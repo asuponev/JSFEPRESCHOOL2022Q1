@@ -5,8 +5,6 @@ const i18Obj = {
         'video': 'Video',
         'price': 'Price',
         'contacts': 'Contacts',
-        'en': 'en',
-        'ru': 'ru',
         'hero-title': 'Alexa Rise',
         'hero-text': 'Save sincere emotions, romantic feelings and happy moments of life together with professional photographer Alexa Rise',
         'hire': 'Hire me',
@@ -39,7 +37,10 @@ const i18Obj = {
         'price-description-3-span-5': 'Make up, visage, hairstyle',
         'order': 'Order shooting',
         'contact-me': 'Contact me',
-        'send-message': 'Send message'
+        'send-message': 'Send message',
+        'e-mail': 'E-mail',
+        'phone': 'Phone',
+        'comm': 'Message'
     },
     'ru': {
         'skills': 'Навыки',
@@ -47,8 +48,6 @@ const i18Obj = {
         'video': 'Видео',
         'price': 'Цены',
         'contacts': 'Контакты',
-        'en': 'анг',
-        'ru': 'рус',
         'hero-title': 'Алекса Райс',
         'hero-text': 'Сохраните искренние эмоции, романтические переживания и счастливые моменты жизни вместе с профессиональным фотографом',
         'hire': 'Пригласить',
@@ -81,7 +80,10 @@ const i18Obj = {
         'price-description-3-span-5': 'Макияж, визаж, прическа',
         'order': 'Заказать съемку',
         'contact-me': 'Свяжитесь со мной',
-        'send-message': 'Отправить'
+        'send-message': 'Отправить',
+        'e-mail': 'Эл.почта',
+        'phone': 'Телефон',
+        'comm': 'Сообщение'
     }
 }
 export default i18Obj;
