@@ -66,10 +66,10 @@ function changeTheme() {
         currentElements.forEach(item => {
             if (btnTheme.classList.contains('button-light-theme')) {
                 item.classList.add('light');
-                setLocalStorage('theme', 'light');
+                setLocalStorage('theme_elsuppo', 'light');
             } else {
                 item.classList.remove('light');
-                localStorage.removeItem('theme');
+                localStorage.removeItem('theme_elsuppo');
             };
         });
     });
@@ -91,9 +91,9 @@ function makeTranslate(event) {
     });
     let lang = event.target.textContent;
     if (lang === 'ru') {
-        setLocalStorage('lang', 'ru');
+        setLocalStorage('lang_elsuppo', 'ru');
     } else {
-        localStorage.removeItem('lang');
+        localStorage.removeItem('lang_elsuppo');
     };
     getTranslate(lang);
 };
@@ -120,11 +120,11 @@ function setLocalStorage(key, value) {
 
 // Get from localStorage
 function getLocalStorage() {
-    if (localStorage.getItem('lang')) {
+    if (localStorage.getItem('lang_elsuppo')) {
         getTranslate('ru')
         switchItem.forEach(item => item.classList.toggle('switch-on'));
     };
-    if (localStorage.getItem('theme')) {
+    if (localStorage.getItem('theme_elsuppo')) {
         changeTheme();
     };
 };
