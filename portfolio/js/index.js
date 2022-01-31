@@ -130,6 +130,24 @@ function getLocalStorage() {
 
 getLocalStorage()
 
+// ----------Scroll top----------
+const btnScrollTop = document.querySelector('.scroll-top')
+
+window.onscroll = () => {
+    if (window.scrollY > 700) {
+        btnScrollTop.classList.remove('hide')
+    } else {
+        btnScrollTop.classList.add('hide')
+    };
+};
+
+function scrollTop() {
+    window.scrollTo(0, 0)
+}
+
+btnScrollTop.addEventListener('click', scrollTop);
+
+
 
 console.log('Оценка: 80\n\n',
 '1. Смена изображений в секции portfolio (25/25)\n',

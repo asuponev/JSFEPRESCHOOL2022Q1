@@ -497,6 +497,24 @@ footer.light {
     margin: 0 auto;
 }
 
+.scroll-top {
+    position: fixed;
+    bottom: 120px;
+    right: 70px;
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('../assets/svg/arrow-up.svg');
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.5s;
+}
+
+.scroll-top.hide {
+    opacity: 0;
+}
+
 @media (max-width: 1024px) {
     .portfolio-buttons {
         width: 450px;
@@ -818,6 +836,10 @@ footer.light {
         margin-top: 100px;
         margin-left: 100px;
     }
+
+    .scroll-top {
+    right: 30px;
+}
 }
 
 @media (max-width: 500px) {
