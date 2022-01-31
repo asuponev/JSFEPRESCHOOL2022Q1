@@ -10,7 +10,7 @@ function burgerMenu() {
     nav.classList.toggle('nav-open');
     burger.classList.toggle('is-active');
     shadow.classList.toggle('shadow-enabled');
-}
+};
 
 burger.addEventListener('click', burgerMenu);
 
@@ -29,14 +29,15 @@ for (let navItem of navItems) {
 // ----------Сhange pictures in portfolio----------
 const portfolioImages = document.querySelectorAll('.photo-card');
 const portfolioBtns = document.querySelector('.portfolio-buttons');
+const portfolioBtnAll = document.querySelectorAll('.portfolio-button');
 
 function changePic(event) {
     if (event.target.classList.contains('portfolio-button')) {
-        Array.from(portfolioBtns.children).forEach(child => child.classList.remove('btn-on'));
+        portfolioBtnAll.forEach(btn => btn.classList.remove('btn-on'));
         event.target.classList.toggle('btn-on');
         portfolioImages.forEach((img, index) => img.src = `./assets/img/${event.target.dataset.season}/${index + 1}.jpg`);
     };
-}
+};
 
 portfolioBtns.addEventListener('click', changePic);
 
@@ -69,7 +70,7 @@ function changeTheme() {
             } else {
                 item.classList.remove('light');
                 localStorage.removeItem('theme');
-            }
+            };
         });
     });
 };
@@ -94,7 +95,7 @@ function makeTranslate(event) {
     } else {
         localStorage.removeItem('lang');
     };
-    getTranslate(lang)
+    getTranslate(lang);
 };
 
 // translate text/placeholder for data-i18n elements
@@ -106,16 +107,16 @@ function getTranslate(lang) {
         if (item.placeholder) {
             item.placeholder = text;
             item.textContent = '';
-        }
+        };
     });
-}
+};
 
 switchItem.forEach((item) => item.addEventListener('click', makeTranslate));
 
 // ----------Save in localStorage----------
 function setLocalStorage(key, value) {
     localStorage.setItem(key, value);
-}
+};
 
 // Get from localStorage
 function getLocalStorage() {
@@ -128,7 +129,7 @@ function getLocalStorage() {
     };
 };
 
-getLocalStorage()
+getLocalStorage();
 
 // ----------Scroll top----------
 const btnScrollTop = document.querySelector('.scroll-top')
@@ -142,14 +143,39 @@ window.onscroll = () => {
 };
 
 function scrollTop() {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
 }
 
 btnScrollTop.addEventListener('click', scrollTop);
 
+// ----------Вutton animation----------
+const buttonsRippleAll = document.querySelectorAll('.ripple')
 
+function buttonRipple(e) {
+    const x = e.clientX
+    const y = e.clientY
 
-console.log('Оценка: 80\n\n',
+    const buttonTop = e.target.offsetTop
+    const buttonLeft = e.target.offsetLeft
+
+    const xInside = x - buttonLeft
+    const yInside = y - buttonTop
+
+    const circle = document.createElement('span')
+    circle.classList.add('circle')
+    circle.style.top = yInside + 'px'
+    circle.style.left = xInside + 'px'
+
+    this.appendChild(circle)
+
+    setTimeout(() => circle.remove(), 500)
+};
+
+buttonsRippleAll.forEach((item) => {
+    item.addEventListener('click', buttonRipple)
+});
+
+console.log('Оценка: 82\n\n',
 '1. Смена изображений в секции portfolio (25/25)\n',
     '1.1. При кликах по кнопкам Winter, Spring, Summer, Autumn в секции portfolio отображаются изображения из папки с соответствующим названием +20\n',
     '1.2. Кнопка, по которой кликнули, становится активной т.е. выделяется стилем. Другие кнопки при этом будут неактивными +5\n\n',
@@ -163,4 +189,5 @@ console.log('Оценка: 80\n\n',
     '3.1. Тёмная тема приложения сменяется светлой +10\n',
     '3.2. Светлая тема приложения сменяется тёмной +10\n',
     '3.3. После смены светлой и тёмной темы интерактивные элементы по-прежнему изменяют внешний вид при наведении и клике и при этом остаются видимыми на странице (нет ситуации с белым шрифтом на белом фоне) +5\n\n',
-'4. Дополнительный функционал: выбранный пользователем язык отображения страницы и светлая или тёмная тема сохраняются при перезагрузке страницы (5/5)\n',);
+'4. Дополнительно: выбранный пользователем язык отображения страницы и тема сохраняются при перезагрузке страницы (5/5)\n\n',
+'5. Дополнительно: сложные эффекты для кнопок при клике (2/5)\n');
