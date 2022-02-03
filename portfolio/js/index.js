@@ -43,7 +43,7 @@ portfolioBtns.addEventListener('click', changePic);
 
 // ----------Portfolio image caching----------
 function preloadImages() {
-    const seasons = ['winter', 'spring', 'summer', 'autumn']
+    const seasons = ['winter', 'spring', 'summer', 'autumn'];
     seasons.forEach(season => {
         for (let i = 1; i <= 6; i++) {
             const img = new Image();
@@ -56,7 +56,7 @@ preloadImages();
 
 // ----------Change theme----------
 const btnTheme = document.querySelector('.button-theme');
-const forLightElements = ['body', 'footer', '.section-title', '.hero-inner', '.portfolio-button', '.btn-on', '.title-text', '.nav', '.nav-item', '.burger']
+const forLightElements = ['body', 'footer', '.section-title', '.hero-inner', '.portfolio-button', '.btn-on', '.title-text', '.nav', '.nav-item', '.burger'];
 
 // Change icon-theme, add/remove class .light to the necessary elements
 function changeTheme() {
@@ -121,7 +121,7 @@ function setLocalStorage(key, value) {
 // Get from localStorage
 function getLocalStorage() {
     if (localStorage.getItem('lang_elsuppo')) {
-        getTranslate('ru')
+        getTranslate('ru');
         switchItem.forEach(item => item.classList.toggle('switch-on'));
     };
     if (localStorage.getItem('theme_elsuppo')) {
@@ -132,13 +132,13 @@ function getLocalStorage() {
 getLocalStorage();
 
 // ----------Scroll top----------
-const btnScrollTop = document.querySelector('.scroll-top')
+const btnScrollTop = document.querySelector('.scroll-top');
 
 window.onscroll = () => {
     if (window.scrollY > 700) {
-        btnScrollTop.classList.remove('hide')
+        btnScrollTop.classList.remove('hide');
     } else {
-        btnScrollTop.classList.add('hide')
+        btnScrollTop.classList.add('hide');
     };
 };
 
@@ -149,45 +149,122 @@ function scrollTop() {
 btnScrollTop.addEventListener('click', scrollTop);
 
 // ----------Вutton animation----------
-const buttonsRippleAll = document.querySelectorAll('.ripple')
+const buttonsRippleAll = document.querySelectorAll('.ripple');
 
 function buttonRipple(e) {
-    const x = e.clientX
-    const y = e.clientY
+    const x = e.clientX;
+    const y = e.clientY;
 
-    const buttonTop = e.target.offsetTop
-    const buttonLeft = e.target.offsetLeft
+    let domRect = this.getBoundingClientRect();
 
-    const xInside = x - buttonLeft
-    const yInside = y - buttonTop
+    const buttonTop = domRect.top;
+    const buttonLeft = domRect.left;
 
-    const circle = document.createElement('span')
-    circle.classList.add('circle')
-    circle.style.top = yInside + 'px'
-    circle.style.left = xInside + 'px'
+    const xInside = x - buttonLeft;
+    const yInside = y - buttonTop;
 
-    this.appendChild(circle)
+    const circle = document.createElement('span');
+    circle.classList.add('circle');
+    circle.style.top = yInside + 'px';
+    circle.style.left = xInside + 'px';
 
-    setTimeout(() => circle.remove(), 500)
+    this.appendChild(circle);
+
+    setTimeout(() => circle.remove(), 500);
 };
 
 buttonsRippleAll.forEach((item) => {
-    item.addEventListener('click', buttonRipple)
+    item.addEventListener('click', buttonRipple);
 });
+
+// ----------Video player----------
+const videoPlayer = document.querySelector('.video-player');
+const videoViewer = videoPlayer.querySelector('.video-viewer');
+const videoControls = videoPlayer.querySelector('.video-controls');
+const playButton = videoPlayer.querySelector('.play-button');
+const playButtonCenter = videoPlayer.querySelector('.play-hover-btn');
+const volumeButton = videoPlayer.querySelector('.volume-button');
+const volume = videoPlayer.querySelector('.volume');
+const currTimeElement = videoPlayer.querySelector('.current');
+const durationElement = videoPlayer.querySelector('.duration');
+const progress = videoPlayer.querySelector('.video-progress');
+const progressBar = videoPlayer.querySelector('.video-progress-bar');
+const fullScrennBtn = videoPlayer.querySelector('.fullscreen-button');
+
+// Play and pause video
+function playPauseVideo() {
+    if (videoViewer.paused) {
+        videoViewer.play();
+        playButton.classList.add('pause');
+        playButtonCenter.classList.toggle('btn-hidden');
+    } else {
+        videoViewer.pause();
+        playButton.classList.remove('pause');
+        playButtonCenter.classList.toggle('btn-hidden');
+    };
+}
+
+videoViewer.addEventListener('click', playPauseVideo);
+playButton.addEventListener('click', playPauseVideo);
+playButtonCenter.addEventListener('click', playPauseVideo);
+
+// Volume
+volume.addEventListener('mousemove', (e) => {
+    videoViewer.volume = e.target.value;
+    if (e.target.value <= 0.5 & e.target.value > 0) {
+        volumeButton.classList.add('volume-low');
+    } else {
+        volumeButton.classList.remove('volume-low');
+    };
+    // if (videoViewer.muted) {
+    //     volumeButton.classList.add('mute');
+    // } 
+
+});
+
+volume.addEventListener('input', (e) => {
+    const value = e.target.value * 100;
+    e.target.style.background = `linear-gradient(to right, #BDAE82 0%, #BDAE82 ${value}%, rgba(0, 0, 0, 0.5) ${value}%, rgba(0, 0, 0, 0.5) 100%)`
+})
+
+volumeButton.addEventListener('click', () => {
+    videoViewer.muted = !videoViewer.muted;
+    volumeButton.classList.toggle('mute');
+});
+
+// Current time and duration
+function currentTime() {
+    let currentMinutes = Math.floor(videoViewer.currentTime / 60);
+    let currentSeconds = Math.floor(videoViewer.currentTime - currentMinutes * 60);
+    let durationMinutes = Math.floor(videoViewer.duration / 60);
+    let durationSeconds = Math.floor(videoViewer.duration - durationMinutes * 60);
+
+    currTimeElement.innerHTML = `${currentMinutes}:${currentSeconds < 10 ? '0' + currentSeconds : currentSeconds}`;
+    durationElement.innerHTML = `${durationMinutes}:${durationSeconds}`;
+};
+
+videoViewer.addEventListener('timeupdate', currentTime);
+
+// Progress bar
+videoViewer.addEventListener('timeupdate', () => {
+    const percentage = (videoViewer.currentTime / videoViewer.duration) * 100;
+    progressBar.style.width =  `${percentage}%`;
+});
+
+// Change progress bar
+progress.addEventListener('click', (e) => {
+    const progressTime = (e.offsetX / progress.offsetWidth) * videoViewer.duration;
+    videoViewer.currentTime = progressTime;
+});
+
+// Full screen
+fullScrennBtn.addEventListener('click', () => {
+    videoViewer.requestFullscreen();
+});
+
+
+
 
 console.log('Оценка: 82\n\n',
 '1. Смена изображений в секции portfolio (25/25)\n',
-    '1.1. При кликах по кнопкам Winter, Spring, Summer, Autumn в секции portfolio отображаются изображения из папки с соответствующим названием +20\n',
-    '1.2. Кнопка, по которой кликнули, становится активной т.е. выделяется стилем. Другие кнопки при этом будут неактивными +5\n\n',
-'2. Перевод страницы на два языка (25/25)\n',
-    '2.1. При клике по надписи ru англоязычная страница переводится на русский язык +10\n',
-    '2.2. При клике по надписи en русскоязычная страница переводится на английский язык +10\n',
-    '2.3. Надписи en или ru, соответствующие текущему языку страницы, становятся активными т.е. выделяются стилем +5\n\n',
-'3. Переключение светлой и тёмной темы (25/25)\n',
-    'Выбран вариант первый. Блоки и секции header, hero, contacts, footer остались без изменений, в оставшихся секциях цвет фона и шрифта поменялись местами согласно макету в figma - "Portfolio-white-1"\n',
-    'На страницу добавлен переключатель при клике по которому\n',
-    '3.1. Тёмная тема приложения сменяется светлой +10\n',
-    '3.2. Светлая тема приложения сменяется тёмной +10\n',
-    '3.3. После смены светлой и тёмной темы интерактивные элементы по-прежнему изменяют внешний вид при наведении и клике и при этом остаются видимыми на странице (нет ситуации с белым шрифтом на белом фоне) +5\n\n',
-'4. Дополнительно: выбранный пользователем язык отображения страницы и тема сохраняются при перезагрузке страницы (5/5)\n\n',
-'5. Дополнительно: сложные эффекты для кнопок при клике (2/5)\n');
+    '\n');
