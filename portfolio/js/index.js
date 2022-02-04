@@ -210,17 +210,18 @@ playButton.addEventListener('click', playPauseVideo);
 playButtonCenter.addEventListener('click', playPauseVideo);
 
 // Volume
-volume.addEventListener('mousemove', (e) => {
+volume.addEventListener('input', (e) => {
     videoViewer.volume = e.target.value;
-    if (e.target.value <= 0.5 & e.target.value > 0) {
+    if (e.target.value <= '0.5' & e.target.value > '0') {
         volumeButton.classList.add('volume-low');
     } else {
         volumeButton.classList.remove('volume-low');
     };
-    // if (videoViewer.muted) {
-    //     volumeButton.classList.add('mute');
-    // } 
-
+    if (e.target.value === '0') {
+        volumeButton.classList.add('mute');
+    } else {
+        volumeButton.classList.remove('mute');
+    };
 });
 
 volume.addEventListener('input', (e) => {
