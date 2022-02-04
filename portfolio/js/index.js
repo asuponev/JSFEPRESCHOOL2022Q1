@@ -190,6 +190,7 @@ const durationElement = videoPlayer.querySelector('.duration');
 const progress = videoPlayer.querySelector('.video-progress');
 const progressBar = videoPlayer.querySelector('.video-progress-bar');
 const fullScrennBtn = videoPlayer.querySelector('.fullscreen-button');
+const speed = videoPlayer.querySelector(".player-speed");
 
 // Play and pause video
 function playPauseVideo() {
@@ -252,17 +253,28 @@ videoViewer.addEventListener('timeupdate', () => {
 });
 
 // Change progress bar
-progress.addEventListener('click', (e) => {
+function handleSeek(e) {
     const progressTime = (e.offsetX / progress.offsetWidth) * videoViewer.duration;
     videoViewer.currentTime = progressTime;
-});
+};
+
+let mousedown = false;
+progress.addEventListener("click", handleSeek);
+progress.addEventListener("mousemove", e => mousedown && handleSeek(e));
+progress.addEventListener("mousedown", () => (mousedown = true));
+progress.addEventListener("mouseup", () => (mousedown = false));
 
 // Full screen
 fullScrennBtn.addEventListener('click', () => {
     videoViewer.requestFullscreen();
 });
 
+// Speed 
+function speedRange() {
+    videoViewer[this.name] = this.value;
+}
 
+speed.addEventListener("change", speedRange);
 
 
 console.log('Оценка: 55\n\n',
