@@ -6,6 +6,7 @@ const volume = audioPlayer.querySelector('.volume');
 const volumeIconLow = audioPlayer.querySelector('.volume-icon low')
 const currTimeElement = audioPlayer.querySelector('.current');
 const durationElement = audioPlayer.querySelector('.duration');
+const progress = audioPlayer.querySelector('.progress');
 
 let playStatus = false;
 
@@ -43,3 +44,21 @@ function currentTime() {
 };
 
 audio.addEventListener('timeupdate', currentTime);
+
+// Progress bar
+audio.addEventListener("timeupdate", () => {
+    progress.value = (audio.currentTime / audio.duration);
+});
+
+function handleSeek(e) {
+    const progressTime = (e.offsetX / progress.offsetWidth) * audio.duration;
+    audio.currentTime = progressTime;
+    // if (audio.currentTime === audio.duration) {
+    //     buttonPlay.className = 'button button-play';
+    //     audio.pause();
+    //     cover.classList.remove('playing');
+    //     playStatus = false;
+    // }
+};
+
+progress.addEventListener("click", handleSeek);
