@@ -54,6 +54,19 @@ body {
   border-radius: 50%;
 }
 
+.song-info__cover.playing {
+  animation: playingCover 6s infinite forwards linear;
+}
+
+@keyframes playingCover {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+}
+
 .song-info__description {
   display: flex;
   flex-direction: column;
