@@ -5,10 +5,53 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Audio player</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="container">
+        <header class="header">
+            <p>audio player</p>
+        </header>
+        <main class="app">
+            <audio src="./assets/audio/drake-started_from_the_bottom.mp3"></audio>
+            <div class="app--song-info">
+                <img src="./assets/img/drake-started_from_the_bottom.jpg" alt="" class="song-info__cover">
+                <div class="song-info__description">
+                    <span class="description__song-name">Started from the bottom</span>
+                    <span class="description__author-name">Drake</span>
+                </div>
+            </div>
+            <div class="app--player-control">
+                <div class="control__progress">
+                    <input type="range" class="progress" min="0" max="1" step="0.01" value="0">
+                    <div class="time">
+                        <span class="current">0:00</span> / <span class="duration">0:00</span>
+                    </div>
+                </div>
+                <div class="control__buttons">
+                    <button class="button button-backward"></button>
+                    <button class="button button-play"></button>
+                    <button class="button button-forward"></button>
+                </div>
+                <div class="control__volume">
+                    <div class="volume-icon low"></div>
+                    <input type="range" class="volume" min="0" max="1" step="0.01" value="0.2">
+                    <div class="volume-icon high"></div>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <p>© 2022</p>
+            <a href="https://github.com/elsuppo" class="footer__github-link" target="_blank">elsuppo</a>
+            <a href="https://rs.school/js-stage0" class="footer__course-link" target="_blank"><img src="./assets/svg/rs_school_js.svg" alt=""></a>
+        </footer>
+    </div>
+
+
+
     <script src="index.js"></script>
 </body>
 </html>
