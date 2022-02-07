@@ -3,7 +3,7 @@ const audio = audioPlayer.querySelector('.audio');
 const buttonPlay = audioPlayer.querySelector('.button-play');
 const cover = audioPlayer.querySelector('.song-info__cover');
 const volume = audioPlayer.querySelector('.volume');
-const volumeIconLow = audioPlayer.querySelector('.volume-icon low')
+const volumeIconLow = audioPlayer.querySelector('.low')
 const currTimeElement = audioPlayer.querySelector('.current');
 const durationElement = audioPlayer.querySelector('.duration');
 const progress = audioPlayer.querySelector('.progress');
@@ -30,8 +30,14 @@ function playPauseAudio() {
 buttonPlay.addEventListener('click', playPauseAudio);
 
 // Volume
+audio.volume = 0.2
 volume.addEventListener('input', (e) => {
     audio.volume = e.target.value;
+    if (audio.volume === 0) {
+        volumeIconLow.classList.add('mute');
+    } else {
+        volumeIconLow.classList.remove('mute');
+    }
 });
 
 // Current time and duration
@@ -41,14 +47,14 @@ function currentTime() {
     let durationMinutes = Math.floor(audio.duration / 60);
     let durationSeconds = Math.floor(audio.duration - durationMinutes * 60);
 
-    currTimeElement.innerHTML = `${currentMinutes}:${currentSeconds < 10 ? '0' + currentSeconds : currentSeconds}`;
     durationElement.innerHTML = `${durationMinutes}:${durationSeconds < 10 ? '0' + durationSeconds : durationSeconds}`;
+    currTimeElement.innerHTML = `${currentMinutes}:${currentSeconds < 10 ? '0' + currentSeconds : currentSeconds}`;
 };
-
+audio.addEventListener('loadedmetadata', currentTime);
 audio.addEventListener('timeupdate', currentTime);
 
 // Progress bar
-audio.addEventListener("timeupdate", () => {
+audio.addEventListener('timeupdate', () => {
     progress.value = (audio.currentTime / audio.duration);
 });
 
@@ -57,7 +63,12 @@ function handleSeek(e) {
     audio.currentTime = progressTime;
 };
 
-progress.addEventListener("click", handleSeek);
+let mousedown = false;
+progress.addEventListener('click', handleSeek);
+progress.addEventListener('mousemove', e => mousedown && handleSeek(e));
+progress.addEventListener('mousedown', () => (mousedown = true));
+progress.addEventListener('mouseup', () => (mousedown = false));
+progress.addEventListener('touchmove', handleSeek);
 
 //  Playlist open/close
 const playlistOpen = document.querySelector('.playlist');
@@ -102,6 +113,20 @@ let songs = [
         audio: './assets/audio/ludovico-einaudi-experience.mp3',
         id: 2,
     },
+    {
+        name: 'Historia de un Amor',
+        cover: './assets/cover/Giovanni_Marradi-Historia_de_un_Amor.jpg',
+        author: 'Giovanni Marradi',
+        audio: './assets/audio/Giovanni_Marradi-Historia_de_un_Amor.mp3',
+        id: 3,
+    },
+    {
+        name: 'Veloma',
+        cover: './assets/cover/Fabrizio_Paterlini-Veloma.jpg',
+        author: 'Fabrizio Paterlini',
+        audio: './assets/audio/Fabrizio_Paterlini-Veloma.mp3',
+        id: 4,
+    },
 ];
 
 function playSong(song) {
@@ -115,11 +140,11 @@ function playSong(song) {
 
 function switchSong(button) {
     const selectedSong = document.querySelector('.selected');
-    selectedSongIndex = playlist.indexOf(selectedSong);
+    const selectedSongIndex = playlist.indexOf(selectedSong);
     selectedSong.classList.remove('selected');
 
     if (button === 'backward') {
-        previousSong = playlist[selectedSongIndex - 1];
+        let previousSong = playlist[selectedSongIndex - 1];
         if (playlist.indexOf(previousSong) === -1) {
             previousSong = playlist[playlist.length - 1];
         }
@@ -130,7 +155,7 @@ function switchSong(button) {
             }
         });
     } else if (button === 'forward') {
-        nextSong = playlist[selectedSongIndex + 1];
+        let nextSong = playlist[selectedSongIndex + 1];
         if (playlist.indexOf(nextSong) === -1) {
             nextSong = playlist[0];
         }
