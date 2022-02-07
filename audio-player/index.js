@@ -63,12 +63,9 @@ function handleSeek(e) {
     audio.currentTime = progressTime;
 };
 
-let mousedown = false;
 progress.addEventListener('click', handleSeek);
-progress.addEventListener('mousemove', e => mousedown && handleSeek(e));
-progress.addEventListener('mousedown', () => (mousedown = true));
-progress.addEventListener('mouseup', () => (mousedown = false));
 progress.addEventListener('change', () => {
+    console.log(progress.value);
     audio.currentTime = progress.value;
 });
 
@@ -109,25 +106,18 @@ let songs = [
         id: 1,
     },
     {
-        name: 'Experience',
-        cover: './assets/cover/ludovico-einaudi-experience.jpg',
-        author: 'Ludovico Einaudi',
-        audio: './assets/audio/ludovico-einaudi-experience.mp3',
-        id: 2,
-    },
-    {
         name: 'Historia de un Amor',
         cover: './assets/cover/Giovanni_Marradi-Historia_de_un_Amor.jpg',
         author: 'Giovanni Marradi',
         audio: './assets/audio/Giovanni_Marradi-Historia_de_un_Amor.mp3',
-        id: 3,
+        id: 2,
     },
     {
         name: 'Veloma',
         cover: './assets/cover/Fabrizio_Paterlini-Veloma.jpg',
         author: 'Fabrizio Paterlini',
         audio: './assets/audio/Fabrizio_Paterlini-Veloma.mp3',
-        id: 4,
+        id: 3,
     },
 ];
 
