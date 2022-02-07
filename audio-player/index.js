@@ -68,7 +68,9 @@ progress.addEventListener('click', handleSeek);
 progress.addEventListener('mousemove', e => mousedown && handleSeek(e));
 progress.addEventListener('mousedown', () => (mousedown = true));
 progress.addEventListener('mouseup', () => (mousedown = false));
-progress.addEventListener('touchmove', handleSeek);
+progress.addEventListener('change', () => {
+    audio.currentTime = progress.value;
+});
 
 //  Playlist open/close
 const playlistOpen = document.querySelector('.playlist');
