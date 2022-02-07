@@ -63,12 +63,9 @@ function handleSeek(e) {
     audio.currentTime = progressTime;
 };
 
-let mousedown = false;
 progress.addEventListener('click', handleSeek);
-progress.addEventListener('mousemove', e => mousedown && handleSeek(e));
-progress.addEventListener('mousedown', () => (mousedown = true));
-progress.addEventListener('mouseup', () => (mousedown = false));
 progress.addEventListener('change', () => {
+    console.log(progress.value);
     audio.currentTime = progress.value;
 });
 
