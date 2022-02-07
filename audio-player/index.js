@@ -3,7 +3,7 @@ const audio = audioPlayer.querySelector('.audio');
 const buttonPlay = audioPlayer.querySelector('.button-play');
 const cover = audioPlayer.querySelector('.song-info__cover');
 const volume = audioPlayer.querySelector('.volume');
-const volumeIconLow = audioPlayer.querySelector('.volume-icon low')
+const volumeIconLow = audioPlayer.querySelector('.low')
 const currTimeElement = audioPlayer.querySelector('.current');
 const durationElement = audioPlayer.querySelector('.duration');
 const progress = audioPlayer.querySelector('.progress');
@@ -33,6 +33,11 @@ buttonPlay.addEventListener('click', playPauseAudio);
 audio.volume = 0.2
 volume.addEventListener('input', (e) => {
     audio.volume = e.target.value;
+    if (audio.volume === 0) {
+        volumeIconLow.classList.add('mute');
+    } else {
+        volumeIconLow.classList.remove('mute');
+    }
 });
 
 // Current time and duration

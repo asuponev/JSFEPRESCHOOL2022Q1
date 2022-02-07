@@ -192,12 +192,12 @@ body {
   background-position: center center;
 }
 
-.volume-icon.mute {
-  background-image: url('./assets/svg/volume-mute.svg');
-}
-
 .volume-icon.low {
   background-image: url('./assets/svg/volume-low.svg');
+}
+
+.volume-icon.mute {
+  background-image: url('./assets/svg/volume-mute.svg');
 }
 
 .volume-icon.high {
@@ -226,11 +226,15 @@ body {
 }
 
 .footer__github-link:hover {
-  color: var(--backgrond-color);
+  color: #FFFFFF;
 }
 
 .footer__course-link img {
   width: 50px;
+}
+
+.footer__course-link:hover img {
+  filter: brightness(0) invert(1);
 }
 
 .playlist {
@@ -278,7 +282,6 @@ body {
 .playlist__song-cover {
   width: 50px;
 }
-
 
 ::-webkit-scrollbar {
   width: 1px;
