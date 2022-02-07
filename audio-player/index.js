@@ -30,19 +30,22 @@ function playPauseAudio() {
 buttonPlay.addEventListener('click', playPauseAudio);
 
 // Volume
+audio.volume = 0.2
 volume.addEventListener('input', (e) => {
     audio.volume = e.target.value;
 });
 
 // Current time and duration
 function currentTime() {
-    let currentMinutes = Math.floor(audio.currentTime / 60);
-    let currentSeconds = Math.floor(audio.currentTime - currentMinutes * 60);
-    let durationMinutes = Math.floor(audio.duration / 60);
-    let durationSeconds = Math.floor(audio.duration - durationMinutes * 60);
+    audio.addEventListener('loadedmetadata', () => {
+        let currentMinutes = Math.floor(audio.currentTime / 60);
+        let currentSeconds = Math.floor(audio.currentTime - currentMinutes * 60);
+        let durationMinutes = Math.floor(audio.duration / 60);
+        let durationSeconds = Math.floor(audio.duration - durationMinutes * 60);
 
-    currTimeElement.innerHTML = `${currentMinutes}:${currentSeconds < 10 ? '0' + currentSeconds : currentSeconds}`;
-    durationElement.innerHTML = `${durationMinutes}:${durationSeconds < 10 ? '0' + durationSeconds : durationSeconds}`;
+        currTimeElement.innerHTML = `${currentMinutes}:${currentSeconds < 10 ? '0' + currentSeconds : currentSeconds}`;
+        durationElement.innerHTML = `${durationMinutes}:${durationSeconds < 10 ? '0' + durationSeconds : durationSeconds}`;
+    })
 };
 
 audio.addEventListener('timeupdate', currentTime);
