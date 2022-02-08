@@ -47,9 +47,13 @@ function currentTime() {
     let durationMinutes = Math.floor(audio.duration / 60);
     let durationSeconds = Math.floor(audio.duration - durationMinutes * 60);
 
-    durationElement.innerHTML = `${durationMinutes}:${durationSeconds < 10 ? '0' + durationSeconds : durationSeconds}`;
-    currTimeElement.innerHTML = `${currentMinutes}:${currentSeconds < 10 ? '0' + currentSeconds : currentSeconds}`;
+    if (!isNaN(durationMinutes) && !isNaN(durationSeconds)) {
+        durationElement.textContent = `${durationMinutes}:${durationSeconds < 10 ? '0' + durationSeconds : durationSeconds}`;
+    }
+    currTimeElement.textContent = `${currentMinutes}:${currentSeconds < 10 ? '0' + currentSeconds : currentSeconds}`;
 };
+
+
 audio.addEventListener('loadedmetadata', currentTime);
 audio.addEventListener('timeupdate', currentTime);
 
