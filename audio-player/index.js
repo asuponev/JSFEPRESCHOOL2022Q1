@@ -24,20 +24,19 @@ function playPauseAudio() {
         audio.pause();
         cover.classList.remove('playing');
         isPlay = false;
-    }
-}
+    };
+};
 
 buttonPlay.addEventListener('click', playPauseAudio);
 
 // Volume
-audio.volume = 0.2
 volume.addEventListener('input', (e) => {
     audio.volume = e.target.value;
     if (audio.volume === 0) {
         volumeIconLow.classList.add('mute');
     } else {
         volumeIconLow.classList.remove('mute');
-    }
+    };
 });
 
 // Current time and duration
@@ -47,14 +46,18 @@ function currentTime() {
     let durationMinutes = Math.floor(audio.duration / 60);
     let durationSeconds = Math.floor(audio.duration - durationMinutes * 60);
 
-    if (!isNaN(durationMinutes) && !isNaN(durationSeconds)) {
+    if (!isNaN(audio.duration)) {
         durationElement.textContent = `${durationMinutes}:${durationSeconds < 10 ? '0' + durationSeconds : durationSeconds}`;
     }
     currTimeElement.textContent = `${currentMinutes}:${currentSeconds < 10 ? '0' + currentSeconds : currentSeconds}`;
+    
 };
 
-
-audio.addEventListener('loadedmetadata', currentTime);
+audio.addEventListener('loadedmetadata', () => {
+    progress.value = 0;
+    audio.volume = 0.2;
+    currentTime();
+});
 audio.addEventListener('timeupdate', currentTime);
 
 // Progress bar
@@ -69,7 +72,6 @@ function handleSeek(e) {
 
 progress.addEventListener('click', handleSeek);
 progress.addEventListener('change', () => {
-    console.log(progress.value);
     audio.currentTime = progress.value;
 });
 
@@ -85,9 +87,9 @@ playlistLink.addEventListener('click', () => {
         isOpen = true;
     } else {
         playlistOpen.classList.remove('open');
-        playlistLink.innerText = '<-playlist'
+        playlistLink.innerText = '<-playlist';
         isOpen = false;
-    }
+    };
 });
 
 // Chage songs
@@ -132,7 +134,7 @@ function playSong(song) {
     audio.src = song.audio;
     isPlay = false;
     playPauseAudio();
-}
+};
 
 function switchSong(button) {
     const selectedSong = document.querySelector('.selected');
@@ -143,26 +145,26 @@ function switchSong(button) {
         let previousSong = playlist[selectedSongIndex - 1];
         if (playlist.indexOf(previousSong) === -1) {
             previousSong = playlist[playlist.length - 1];
-        }
+        };
         previousSong.classList.add('selected');
         songs.filter((song) => {
             if (song.id == previousSong.id) {
                 playSong(song);
-            }
+            };
         });
     } else if (button === 'forward') {
         let nextSong = playlist[selectedSongIndex + 1];
         if (playlist.indexOf(nextSong) === -1) {
             nextSong = playlist[0];
-        }
+        };
         nextSong.classList.add('selected');
         songs.filter((song) => {
             if (song.id == nextSong.id) {
                 playSong(song);
-            }
+            };
         });
-    }
-}
+    };
+};
 
 back.addEventListener('click', () => switchSong('backward'));
 forward.addEventListener('click', () => switchSong('forward'));
