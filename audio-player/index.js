@@ -170,7 +170,7 @@ back.addEventListener('click', () => switchSong('backward'));
 forward.addEventListener('click', () => switchSong('forward'));
 audio.addEventListener('ended', () => switchSong('forward'));
 
-// Change song in playlist
+// Playlist clickability
 let playlistSong
 playlistOpen.onclick = function(event) {
     if (event.target.classList.contains('playlist__song-info') || event.target.classList.contains('playlist__song-cover') || event.target.classList.contains('playlist_track')) {
