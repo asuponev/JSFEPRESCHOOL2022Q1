@@ -170,6 +170,27 @@ back.addEventListener('click', () => switchSong('backward'));
 forward.addEventListener('click', () => switchSong('forward'));
 audio.addEventListener('ended', () => switchSong('forward'));
 
+// Playlist clickability
+let playlistSong
+playlistOpen.onclick = function(event) {
+    if (event.target.classList.contains('playlist__song-info') || event.target.classList.contains('playlist__song-cover') || event.target.classList.contains('playlist_track')) {
+        playlistSong = event.target.closest('.playlist__song')
+    } else if (event.target.classList.contains('playlist__song')) {
+        playlistSong = event.target
+    } else {
+        return
+    }
+    playlist.forEach(item => item.classList.remove('selected'))
+    playlistSong.classList.toggle('selected');
+    const selectedSong = document.querySelector('.selected');
+    const selectedSongIndex = playlist.indexOf(selectedSong);
+    songs.filter((song) => {
+        if (song.id == selectedSongIndex) {
+            playSong(song);
+        };
+    });
+}
+
 console.log('Оценка: 60\n\n',
     '1. Вёрстка (10/10)\n',
     '1.1. Вёрстка аудиоплеера: есть кнопка Play/Pause, кнопки "Вперёд" и "Назад" для пролистывания аудиотреков, прогресс-бар, отображается название и автор трека +5\n',
