@@ -1,0 +1,148 @@
+:root {
+    --font-main: 400 1em/1 'Inter', sans-serif;
+    --color-black:  #000000;
+    --color-white: #FFFFFF;
+    --color-gold: #BDAE82;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;    
+}
+
+body {
+    font: var(--font-main);
+    color: var(--color-white);
+}
+
+.header {
+    background-color: var(--color-black);
+    margin-bottom: 20px;
+}
+
+.header__logo {
+    background-image: url('./assets/svg/logo.svg');
+    background-position: center;
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.header__logo:hover {
+    filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+    contrast(87%);
+    transition: .3s;
+}
+
+.header__search {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 50%;
+    padding: 0 10px;
+    background-color: var(--color-white);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.header__search_button {
+    display: block;
+    background-image: url('./assets/svg/button-search.svg');
+    background-color: transparent;
+    background-position: center;
+    background-size: cover;
+    border: none;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.button-close {
+    display: none;
+    background-image: url('./assets/svg/button-close.svg');
+    margin-left: auto;
+}
+
+.button-close.active {
+    display: block;
+}
+
+.header__search_button:hover {
+    filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+    contrast(87%);
+    transition: .3s;
+}
+
+.input-search {
+    width: 80%;
+    border: none;
+    border-radius: 2px;
+    padding: 0 10px;
+    font: var(--font-main);
+    outline: none;
+}
+
+.container {
+    max-width: 1440px;
+    padding: 0 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container-header,
+.container-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}
+
+.images {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.image-item {
+    width: 350px;
+    height: 350px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.image-item:hover {
+    transform: scale(1.03);
+    transition: .5s;
+}
+
+.footer {
+    background-color: var(--color-black);
+    margin-top: 20px;
+}
+
+.footer__github-link {
+    text-decoration: none;
+    color: var(--color-white);
+}
+
+.footer__github-link:hover {
+    color: var(--color-gold);
+    transition: .3s;
+}
+
+.footer__course-link img {
+    width: 80px;
+}
+
+.footer__course-link:hover img {
+    filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+    contrast(87%);
+    transition: .3s;
+}
