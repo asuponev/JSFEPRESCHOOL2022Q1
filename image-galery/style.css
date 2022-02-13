@@ -117,6 +117,11 @@ body {
     cursor: pointer;
 }
 
+.image-item:hover {
+    transform: scale(1.03);
+    transition: .5s;
+}
+
 .footer {
     background-color: var(--color-black);
     margin-top: 20px;
