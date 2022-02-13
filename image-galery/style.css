@@ -103,7 +103,7 @@ body {
 .images {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
     gap: 20px;
 }
@@ -145,4 +145,10 @@ body {
     filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
     contrast(87%);
     transition: .3s;
+}
+
+@media (max-width: 820px) {
+    .images {
+        justify-content: center;
+    }
 }
