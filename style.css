@@ -1,1 +1,67 @@
-/* init */
+:root {
+    --font-main: 400 1em/1 'Inter', sans-serif;
+    --font-color: #000000;
+}
+
+body {
+    font: var(--font-main);
+}
+
+.header {
+    background-color: red;
+    margin-bottom: 40px;
+}
+
+.container {
+    max-width: 1440px;
+    padding: 0 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container-header,
+.container-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}
+
+.images {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.image-item {
+    width: 400px;
+    height: 400px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.footer {
+    background-color: red;
+    margin-top: 40px;
+}
+
+.footer__github-link {
+  text-decoration: none;
+  color: var(--font-color);
+}
+
+.footer__github-link:hover {
+  color: #FFFFFF;
+}
+
+.footer__course-link img {
+  width: 80px;
+}
+
+.footer__course-link:hover img {
+  filter: brightness(0) invert(1);
+}
