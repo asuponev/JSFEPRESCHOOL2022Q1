@@ -15,7 +15,7 @@ async function getData() {
 function showData(data) {
     imagesFlex.innerHTML = '';
     data.results.forEach(result => {
-        const imageItem = `<div class="image-item" style="background-image: url('${result.urls.regular}');"></div>`;
+        const imageItem = `<a href='${result.links.html}' target="_blank"><div class="image-item" style="background-image: url('${result.urls.regular}');"></div></a>`;
         imagesFlex.insertAdjacentHTML('afterbegin', imageItem);
     });
 };
