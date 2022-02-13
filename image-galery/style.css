@@ -33,6 +33,7 @@ body {
 }
 
 .header__logo {
+    display: block;
     background-image: url('./assets/svg/logo.svg');
     background-position: center;
     background-size: cover;
