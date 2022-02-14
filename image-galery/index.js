@@ -7,9 +7,13 @@ const inputSearch = document.querySelector('.input-search');
 const closeButton = document.querySelector('.button-close');
 
 async function getData() {
-    const res = await fetch(url);
-    const data = await res.json();
-    showData(data);
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        showData(data);
+    } catch (e) {
+        alert(`Ошибка: ${e}\nВероятно превышено доступное количество запросов, проверьте приложение позже`)
+    } 
 };
 
 function showData(data) {
