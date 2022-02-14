@@ -88,13 +88,14 @@ body {
 }
 
 .input-search {
+    -webkit-appearance: none;
     width: 80%;
     border: none;
     border-radius: 2px;
     padding: 0 10px;
     font: var(--font-main);
     outline: none;
-    -webkit-appearance: none;
+    background-color: var(--color-white);
 }
 
 .input-search::-webkit-search-cancel-button {
