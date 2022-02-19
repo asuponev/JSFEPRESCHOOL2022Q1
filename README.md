@@ -11,4 +11,4 @@ https://rolling-scopes-school.github.io/elsuppo-JSFEPRESCHOOL/audio-player/
 https://rolling-scopes-school.github.io/elsuppo-JSFEPRESCHOOL/image-galery/
 
 ### Game snake
-https://rolling-scopes-school.github.io/elsuppo-JSFEPRESCHOOLgame-snake/
+https://rolling-scopes-school.github.io/elsuppo-JSFEPRESCHOOL/game-snake/
