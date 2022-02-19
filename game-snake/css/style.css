@@ -5,9 +5,61 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font: 400 1em/1 'Inter', sans-serif;;
 }
 
 canvas {
     display: block;
     margin: 0 auto;
+}
+
+.container {
+    width: 400px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(199, 198, 198);
+    width: 360px;
+    height: 40px;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.header span {
+    display: block;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: rgb(199, 198, 198);
+    width: 360px;
+    height: 40px;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.footer__github-link {
+    text-decoration: none;
+    color: #000;
+}
+
+.footer__github-link:hover {
+  color: #FFFFFF;
+}
+
+.footer__course-link {
+    margin-left: auto;
+}
+
+.footer__course-link img {
+    width: 50px;
+}
+
+.footer__course-link:hover img {
+  filter: invert(1);
 }
