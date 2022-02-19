@@ -5,8 +5,11 @@ let speed = 7;
 
 let cellCount = 20;
 let cellSize = canvas.width / cellCount
-let xHeadSnake = Math.floor(Math.random() * cellSize);
-let yHeadSnake = Math.floor(Math.random() * cellSize);
+let xHeadSnake = Math.floor(Math.random() * cellCount);
+let yHeadSnake = Math.floor(Math.random() * cellCount);
+
+let xFood = Math.floor(Math.random() * cellCount);
+let yFood = Math.floor(Math.random() * cellCount);
 
 let xDirection = 0;
 let yDirection = 0;
@@ -15,9 +18,10 @@ drawGame()
 function drawGame() {
     clearScreen();
     moveSnake();
-    draSnake();
-
-    setTimeout(drawGame, 1000 / speed)
+    drawSnake();
+    drawFood();
+    checkIntersection();
+    setTimeout(drawGame, 1000 / speed);
 }
 
 function clearScreen() {
@@ -25,7 +29,7 @@ function clearScreen() {
     ctx.fillRect(0,0,canvas.width,canvas.height)
 }
 
-function draSnake() {
+function drawSnake() {
     ctx.fillStyle = 'orange'
     ctx.fillRect(xHeadSnake * cellCount, yHeadSnake * cellCount, cellSize, cellSize)
 }
@@ -33,6 +37,18 @@ function draSnake() {
 function moveSnake() {
     xHeadSnake = xHeadSnake + xDirection;
     yHeadSnake = yHeadSnake + yDirection;
+}
+
+function drawFood() {
+    ctx.fillStyle = 'red'
+    ctx.fillRect(xFood * cellCount, yFood * cellCount, cellSize, cellSize)
+}
+
+function checkIntersection() {
+    if (xFood == xHeadSnake && yFood == yHeadSnake) {
+        xFood = Math.floor(Math.random() * cellCount);
+        yFood = Math.floor(Math.random() * cellCount);
+    }
 }
 
 document.body.addEventListener('keydown', keyDown)
