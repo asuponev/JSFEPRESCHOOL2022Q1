@@ -21,7 +21,7 @@ canvas {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgb(199, 198, 198);
+    background-color: rgb(243, 243, 243);
     width: 360px;
     height: 40px;
     gap: 20px;
@@ -32,11 +32,32 @@ canvas {
     display: block;
 }
 
+.records {
+  position: fixed;
+  top: 0;
+  width: 200px;
+  height: 480px;
+  background-color: rgb(243, 243, 243);
+  right: -100%;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.records.open {
+  position: absolute;
+  right: calc(50vw - 200px);
+}
+
+.records-switch {
+    z-index: 3;
+    cursor: pointer;
+}
+
 .footer {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    background-color: rgb(199, 198, 198);
+    background-color: rgb(243, 243, 243);
     width: 360px;
     height: 40px;
     gap: 20px;
@@ -48,18 +69,10 @@ canvas {
     color: #000;
 }
 
-.footer__github-link:hover {
-  color: #FFFFFF;
-}
-
 .footer__course-link {
     margin-left: auto;
 }
 
 .footer__course-link img {
     width: 50px;
-}
-
-.footer__course-link:hover img {
-  filter: invert(1);
 }

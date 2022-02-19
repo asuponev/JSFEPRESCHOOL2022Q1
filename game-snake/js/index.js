@@ -1,6 +1,8 @@
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 const scoreValue = document.querySelector('.score-value')
+const recordsSpan = document.querySelector('.records-switch')
+const recordsOpen = document.querySelector('.records')
 
 let speed = 1;
 
@@ -94,51 +96,66 @@ function checkSelfIntersection(head, arr) {
         if (head.x == arr[i].x && head.y == arr[i].y) {
             gameOver = true;
             break;
-        }
-    }
-}
+        };
+    };
+};
 
 function drawSpeed() {
     ctx.fillStyle = 'white';
     ctx.font = '12px Arial';
-    ctx.fillText(`Speed ${speed}`, canvas.width - 50, 16)
-}
+    ctx.fillText(`Speed ${speed}`, canvas.width - 50, 16);
+};
 
 function changeSpeed() {
     if (score > 2) {
         speed = 2;
-    }
+    };
     if (score > 10) {
         speed = 3;
-    }
+    };
     if (score > 20) {
         speed = 4;
-    }
+    };
     if (score > 30) {
         speed = 5;
-    }
-}
+    };
+};
 
-document.body.addEventListener('keydown', keyDown)
+document.body.addEventListener('keydown', keyDown);
 
 function keyDown(event) {
     if (event.keyCode == 37 && xDirection != 1) {
         yDirection = 0;
         xDirection = -1;
-    }
+    };
 
     if (event.keyCode == 38 && yDirection != 1) {
         yDirection = -1;
         xDirection = 0;
-    }
+    };
 
     if (event.keyCode == 39 && xDirection != -1) {
         yDirection = 0;
         xDirection = 1;
-    }
+    };
 
     if (event.keyCode == 40 && yDirection != -1) {
         yDirection = 1;
         xDirection = 0;
-    }
-}
+    };
+};
+
+
+let isOpen = false;
+
+recordsSpan.addEventListener('click', () => {
+    if (!isOpen) {
+        recordsOpen.classList.add('open');
+        recordsSpan.innerText = 'records->';
+        isOpen = true;
+    } else {
+        recordsOpen.classList.remove('open');
+        recordsSpan.innerText = '<-records';
+        isOpen = false;
+    };
+});
