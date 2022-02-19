@@ -2,7 +2,7 @@ const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 const scoreValue = document.querySelector('.score-value')
 
-let speed = 7;
+let speed = 1;
 
 let score = 0;
 
@@ -43,7 +43,9 @@ function drawGame() {
     drawFood();
     drawSnake();
     moveSnake();
-    setTimeout(drawGame, 1000 / speed);
+    drawSpeed();
+    changeSpeed();
+    setTimeout(drawGame, 200 / speed);
 }
 
 function clearScreen() {
@@ -93,6 +95,27 @@ function checkSelfIntersection(head, arr) {
             gameOver = true;
             break;
         }
+    }
+}
+
+function drawSpeed() {
+    ctx.fillStyle = 'white';
+    ctx.font = '12px Arial';
+    ctx.fillText(`Speed ${speed}`, canvas.width - 50, 16)
+}
+
+function changeSpeed() {
+    if (score > 2) {
+        speed = 2;
+    }
+    if (score > 10) {
+        speed = 3;
+    }
+    if (score > 20) {
+        speed = 4;
+    }
+    if (score > 30) {
+        speed = 5;
     }
 }
 
