@@ -94,9 +94,9 @@ function drawSnake() {
     if (xHeadSnake < 0 || xHeadSnake >= cellSize || yHeadSnake < 0 || yHeadSnake >= cellSize) {
         gameOver = true;
         countGame++;
-        localStorage.setItem('countGame', countGame);
+        localStorage.setItem('countGameSuppo', countGame);
         recordsList[countGame] = score;
-        localStorage.setItem('recordsList', JSON.stringify(recordsList));
+        localStorage.setItem('recordsListSuppo', JSON.stringify(recordsList));
     };
 
     let newHead = {
@@ -108,9 +108,9 @@ function drawSnake() {
         if (newHead.x == snake[i].x && newHead.y == snake[i].y) {
             gameOver = true;
             countGame++;
-            localStorage.setItem('countGame', countGame);
+            localStorage.setItem('countGameSuppo', countGame);
             recordsList[countGame] = score;
-            localStorage.setItem('recordsList', JSON.stringify(recordsList));
+            localStorage.setItem('recordsListSuppo', JSON.stringify(recordsList));
             break;
         };
     };
@@ -203,9 +203,9 @@ recordsSpan.addEventListener('click', () => {
 });
 
 function getLocalStorage() {
-    if (localStorage.getItem('recordsList')) {
-        recordsList = JSON.parse(localStorage.getItem('recordsList'));
-        countGame = localStorage.getItem('countGame');
+    if (localStorage.getItem('recordsListSuppo')) {
+        recordsList = JSON.parse(localStorage.getItem('recordsListSuppo'));
+        countGame = localStorage.getItem('countGameSuppo');
         const keys = Object.keys(recordsList);
         keys.forEach(key => {
             const recordSpan = `<span>Game: ${key}, score: ${recordsList[key]}<span>`;
