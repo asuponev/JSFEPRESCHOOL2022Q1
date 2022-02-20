@@ -137,8 +137,8 @@ function drawSpeed() {
 function drawHighScore() {
     ctx.fillStyle = 'white';
     ctx.font = '12px Arial';
-    if (localStorage.getItem('highScore')) {
-        ctx.fillText(`High score ${localStorage.getItem('highScore')}`, canvas.width - 393, 16);
+    if (localStorage.getItem('highScoreSuppo')) {
+        ctx.fillText(`High score ${localStorage.getItem('highScoreSuppo')}`, canvas.width - 393, 16);
     } else {
         ctx.fillText(`High score 0`, canvas.width - 393, 16);
     };
@@ -215,7 +215,7 @@ function getLocalStorage() {
         // for high score
         const values = Object.values(recordsList);
         let highScore = values.sort((a, b) => b - a)[0]
-        localStorage.setItem('highScore', highScore);
+        localStorage.setItem('highScoreSuppo', highScore);
     };
 };
 
