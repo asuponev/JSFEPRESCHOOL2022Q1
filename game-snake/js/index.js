@@ -50,9 +50,12 @@ function drawGame() {
     if (gameOver) {
         ctx.fillStyle = 'white';
         ctx.font = '50px Arial';
-        ctx.fillText('GAME OVER!', canvas.width / 8.5, canvas.height / 2);
+        ctx.fillText('GAME OVER!', canvas.width / 8.8, canvas.height / 2);
         ctx.font = '20px Arial';
-        ctx.fillText('for return click on the snake', canvas.width / 4.75, canvas.height / 1.75);
+        ctx.fillText(`Score: ${score}`, canvas.width / 2.4, canvas.height / 1.75);
+        ctx.font = '12px Arial';
+        ctx.fillText('for return click on the snake', canvas.width / 3.2, canvas.height / 1.5);
+        ctx.fillText('or refresh the page', canvas.width / 2.7, canvas.height / 1.4);
         document.body.removeEventListener('keydown', keyDown);
         return
     };
@@ -203,3 +206,16 @@ function getLocalStorage() {
 };
 
 getLocalStorage();
+
+
+console.log(
+    'Оценка: 60\n\n',
+    '1. Вёрстка (10/10)\n',
+    'реализован интерфейс игры +5\n',
+    'в футере приложения есть ссылка на гитхаб автора приложения, год создания приложения, логотип курса со ссылкой на курс +5\n\n',
+    '2. Логика игры. Ходы, перемещения фигур, другие действия игрока подчиняются определённым свойственным игре правилам (10/10)\n\n',
+    '3. Реализовано завершение игры при достижении игровой цели (10/10)\n\n',
+    '4. По окончанию игры выводится её результат, например, количество ходов, время игры, набранные баллы, выигрыш или поражение и т.д (10/10)\n\n',
+    '5. Результаты последних 10 игр сохраняются в local storage. Есть таблица рекордов, в которой сохраняются результаты предыдущих 10 игр (10/10)\n\n',
+    '6. Анимации или звуки, или настройки игры. Баллы начисляются за любой из перечисленных пунктов (10/10)'
+);
