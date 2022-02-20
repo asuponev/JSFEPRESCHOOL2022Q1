@@ -82,6 +82,10 @@ function drawSnake() {
         snake.pop();
     };
 
+    if (xHeadSnake < 0 || xHeadSnake >= cellSize || yHeadSnake < 0 || yHeadSnake >= cellSize) {
+        gameOver = true;
+    };
+
     let newHead = {
         x: xHeadSnake,
         y: yHeadSnake
