@@ -23,7 +23,6 @@ let yHeadSnake = snake[0].y;
 const sound = new Audio('./assets/audio/bite.mp3');
 sound.volume = 0.1;
 
-
 let xFood = Math.floor(Math.random() * cellCount);
 let yFood = Math.floor(Math.random() * cellCount);
 
@@ -32,12 +31,24 @@ let yDirection = 0;
 
 let gameOver = false;
 
+let xDirectionPrev = 0;
+let yDirectionPrev = 0;
+
 drawGame()
 function drawGame() {
+    // fix bag
+    if (xDirectionPrev === 1 && xDirection === -1) xDirection = xDirectionPrev;
+    if (xDirectionPrev === -1 && xDirection === 1) xDirection = xDirectionPrev;
+    if (yDirectionPrev === 1 && yDirection === -1) yDirection = yDirectionPrev;
+    if (yDirectionPrev === -1 && yDirection === 1) yDirection = yDirectionPrev;
+    xDirectionPrev = xDirection;
+    yDirectionPrev = yDirection;
+
     if (gameOver) {
         ctx.fillStyle = 'white';
         ctx.font = '50px Arial'
         ctx.fillText('GAME OVER!', canvas.width / 8.5, canvas.height / 2)
+        document.body.removeEventListener('keydown', keyDown);
         return
     }
     
@@ -76,7 +87,12 @@ function drawSnake() {
         y: yHeadSnake
     };
 
-    checkSelfIntersection(newHead, snake);
+    for (let i = 0; i < snake.length; i++) {
+        if (newHead.x == snake[i].x && newHead.y == snake[i].y) {
+            gameOver = true;
+            break;
+        };
+    };
 
     snake.unshift(newHead);
 }
@@ -90,15 +106,6 @@ function moveSnake() {
     xHeadSnake += xDirection;
     yHeadSnake += yDirection;
 }
-
-function checkSelfIntersection(head, arr) {
-    for (let i = 0; i < arr.length; i++) {
-        if (head.x == arr[i].x && head.y == arr[i].y) {
-            gameOver = true;
-            break;
-        };
-    };
-};
 
 function drawSpeed() {
     ctx.fillStyle = 'white';
@@ -118,6 +125,12 @@ function changeSpeed() {
     };
     if (score > 30) {
         speed = 5;
+    };
+    if (score > 40) {
+        speed = 6;
+    };
+    if (score > 50) {
+        speed = 7;
     };
 };
 
@@ -145,9 +158,7 @@ function keyDown(event) {
     };
 };
 
-
 let isOpen = false;
-
 recordsSpan.addEventListener('click', () => {
     if (!isOpen) {
         recordsOpen.classList.add('open');
