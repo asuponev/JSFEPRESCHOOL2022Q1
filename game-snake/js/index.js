@@ -52,7 +52,7 @@ function drawGame() {
         ctx.font = '50px Arial';
         ctx.fillText('GAME OVER!', canvas.width / 8.8, canvas.height / 2);
         ctx.font = '20px Arial';
-        ctx.fillText(`Score: ${score}`, canvas.width / 2.4, canvas.height / 1.8);
+        ctx.fillText(`Score: ${score}`, canvas.width / 2.4, canvas.height / 1.7);
         ctx.font = '12px Arial';
         ctx.fillText('for return click on the snake', canvas.width / 3.2, canvas.height / 1.5);
         ctx.fillText('or refresh the page', canvas.width / 2.7, canvas.height / 1.4);
