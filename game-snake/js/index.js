@@ -26,6 +26,12 @@ let yHeadSnake = snake[0].y;
 const sound = new Audio('./assets/audio/bite.mp3');
 sound.volume = 0.1;
 
+const foodImg = new Image();
+foodImg.src = './assets/img/food.png';
+
+const snakeImg = new Image();
+snakeImg.src = './assets/img/snake.png';
+
 let xFood = Math.floor(Math.random() * cellCount);
 let yFood = Math.floor(Math.random() * cellCount);
 
@@ -57,7 +63,7 @@ function drawGame() {
         ctx.fillText('for return click on the snake', canvas.width / 3.2, canvas.height / 1.5);
         ctx.fillText('or refresh the page', canvas.width / 2.7, canvas.height / 1.4);
         document.body.removeEventListener('keydown', keyDown);
-        return
+        return;
     };
     
     clearScreen();   
@@ -66,24 +72,25 @@ function drawGame() {
     moveSnake();
     drawSpeed();
     changeSpeed();
-    drawHighScore()
+    drawHighScore();
     setTimeout(drawGame, 200 / speed);
 }
 
 function clearScreen() {
-    ctx.fillStyle = 'black';;
+    ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 };
 
 function drawSnake() {
     for (let i = 0; i < snake.length; i++) {
         ctx.fillStyle = 'green';
-        ctx.fillRect(snake[i].x * cellCount, snake[i].y * cellCount, cellSize, cellSize);
+        // ctx.fillRect(snake[i].x * cellCount, snake[i].y * cellCount, cellSize, cellSize);
+        ctx.drawImage(snakeImg, snake[i].x * cellCount, snake[i].y * cellCount);
     };
 
     if (xFood == xHeadSnake && yFood == yHeadSnake) {
         score++;
-        scoreValue.innerHTML = `Score: ${score}`
+        scoreValue.innerHTML = `Score: ${score}`;
         sound.play();
         xFood = Math.floor(Math.random() * cellCount);
         yFood = Math.floor(Math.random() * cellCount);
@@ -119,8 +126,9 @@ function drawSnake() {
 };
 
 function drawFood() {
-    ctx.fillStyle = 'red';
-    ctx.fillRect(xFood * cellCount, yFood * cellCount, cellSize, cellSize);
+    // ctx.fillStyle = 'red';
+    // ctx.fillRect(xFood * cellCount, yFood * cellCount, cellSize, cellSize);
+    ctx.drawImage(foodImg, xFood * cellCount, yFood * cellCount);
 };
 
 function moveSnake() {
