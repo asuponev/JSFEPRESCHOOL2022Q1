@@ -33,19 +33,26 @@ canvas {
 }
 
 .records {
-  position: fixed;
-  top: 0;
-  width: 200px;
-  height: 480px;
-  background-color: rgb(243, 243, 243);
-  right: -100%;
-  transition: all 0.3s ease;
-  z-index: 2;
+    position: fixed;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px 20px 40px 40px;
+    top: 0;
+    width: 180px;
+    height: 400px;
+    background-color: rgb(243, 243, 243);
+    right: -100%;
+    transition: all 0.3s ease;
+    z-index: 2;
+    overflow: scroll;
 }
 
 .records.open {
-  position: absolute;
-  right: calc(50vw - 200px);
+    position: absolute;
+    right: calc(50vw - 200px);
 }
 
 .records-switch {
