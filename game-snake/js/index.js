@@ -52,7 +52,7 @@ function drawGame() {
         ctx.font = '50px Arial';
         ctx.fillText('GAME OVER!', canvas.width / 8.8, canvas.height / 2);
         ctx.font = '20px Arial';
-        ctx.fillText(`Score: ${score}`, canvas.width / 2.4, canvas.height / 1.75);
+        ctx.fillText(`Score: ${score}`, canvas.width / 2.4, canvas.height / 1.8);
         ctx.font = '12px Arial';
         ctx.fillText('for return click on the snake', canvas.width / 3.2, canvas.height / 1.5);
         ctx.fillText('or refresh the page', canvas.width / 2.7, canvas.height / 1.4);
@@ -66,6 +66,7 @@ function drawGame() {
     moveSnake();
     drawSpeed();
     changeSpeed();
+    drawHighScore()
     setTimeout(drawGame, 200 / speed);
 }
 
@@ -133,6 +134,16 @@ function drawSpeed() {
     ctx.fillText(`Speed ${speed}`, canvas.width - 50, 16);
 };
 
+function drawHighScore() {
+    ctx.fillStyle = 'white';
+    ctx.font = '12px Arial';
+    if (localStorage.getItem('highScore')) {
+        ctx.fillText(`High score ${localStorage.getItem('highScore')}`, canvas.width - 393, 16);
+    } else {
+        ctx.fillText(`High score 0`, canvas.width - 393, 16);
+    };
+};
+
 function changeSpeed() {
     if (score > 2) {
         speed = 2;
@@ -197,11 +208,14 @@ function getLocalStorage() {
         countGame = localStorage.getItem('countGame');
         const keys = Object.keys(recordsList);
         keys.forEach(key => {
-            console.log('key:', key);
-            console.log('value:', recordsList[key]);
             const recordSpan = `<span>Game: ${key}, score: ${recordsList[key]}<span>`;
             recordsOpen.insertAdjacentHTML('afterbegin', recordSpan);
         });
+
+        // for high score
+        const values = Object.values(recordsList);
+        let highScore = values.sort((a, b) => b - a)[0]
+        localStorage.setItem('highScore', highScore);
     };
 };
 
