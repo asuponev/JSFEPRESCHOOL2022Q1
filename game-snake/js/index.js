@@ -1,21 +1,24 @@
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
-const scoreValue = document.querySelector('.score-value')
-const recordsSpan = document.querySelector('.records-switch')
-const recordsOpen = document.querySelector('.records')
+const scoreValue = document.querySelector('.score-value');
+const recordsSpan = document.querySelector('.records-switch');
+const recordsOpen = document.querySelector('.records');
 
 let speed = 1;
 
 let score = 0;
 
-let cellCount = 20;
-let cellSize = canvas.width / cellCount
+let recordsList = {};
+let countGame = 0;
 
-let snake = []
+let cellCount = 20;
+let cellSize = canvas.width / cellCount;
+
+let snake = [];
 snake[0] = {
     x: Math.floor(Math.random() * cellCount),
     y: Math.floor(Math.random() * cellCount)
-}
+};
 
 let xHeadSnake = snake[0].x;
 let yHeadSnake = snake[0].y;
@@ -34,7 +37,7 @@ let gameOver = false;
 let xDirectionPrev = 0;
 let yDirectionPrev = 0;
 
-drawGame()
+drawGame();
 function drawGame() {
     // fix bag
     if (xDirectionPrev === 1 && xDirection === -1) xDirection = xDirectionPrev;
@@ -46,11 +49,13 @@ function drawGame() {
 
     if (gameOver) {
         ctx.fillStyle = 'white';
-        ctx.font = '50px Arial'
-        ctx.fillText('GAME OVER!', canvas.width / 8.5, canvas.height / 2)
+        ctx.font = '50px Arial';
+        ctx.fillText('GAME OVER!', canvas.width / 8.5, canvas.height / 2);
+        ctx.font = '20px Arial';
+        ctx.fillText('for return click on the snake', canvas.width / 4.75, canvas.height / 1.75);
         document.body.removeEventListener('keydown', keyDown);
         return
-    }
+    };
     
     clearScreen();   
     drawFood();
@@ -62,9 +67,9 @@ function drawGame() {
 }
 
 function clearScreen() {
-    ctx.fillStyle = 'black';
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
-}
+    ctx.fillStyle = 'black';;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
 
 function drawSnake() {
     for (let i = 0; i < snake.length; i++) {
@@ -84,6 +89,10 @@ function drawSnake() {
 
     if (xHeadSnake < 0 || xHeadSnake >= cellSize || yHeadSnake < 0 || yHeadSnake >= cellSize) {
         gameOver = true;
+        countGame++;
+        localStorage.setItem('countGame', countGame);
+        recordsList[countGame] = score;
+        localStorage.setItem('recordsList', JSON.stringify(recordsList));
     };
 
     let newHead = {
@@ -94,22 +103,26 @@ function drawSnake() {
     for (let i = 0; i < snake.length; i++) {
         if (newHead.x == snake[i].x && newHead.y == snake[i].y) {
             gameOver = true;
+            countGame++;
+            localStorage.setItem('countGame', countGame);
+            recordsList[countGame] = score;
+            localStorage.setItem('recordsList', JSON.stringify(recordsList));
             break;
         };
     };
 
     snake.unshift(newHead);
-}
+};
 
 function drawFood() {
-    ctx.fillStyle = 'red'
-    ctx.fillRect(xFood * cellCount, yFood * cellCount, cellSize, cellSize)
-}
+    ctx.fillStyle = 'red';
+    ctx.fillRect(xFood * cellCount, yFood * cellCount, cellSize, cellSize);
+};
 
 function moveSnake() {
     xHeadSnake += xDirection;
     yHeadSnake += yDirection;
-}
+};
 
 function drawSpeed() {
     ctx.fillStyle = 'white';
@@ -174,3 +187,19 @@ recordsSpan.addEventListener('click', () => {
         isOpen = false;
     };
 });
+
+function getLocalStorage() {
+    if (localStorage.getItem('recordsList')) {
+        recordsList = JSON.parse(localStorage.getItem('recordsList'));
+        countGame = localStorage.getItem('countGame');
+        const keys = Object.keys(recordsList);
+        keys.forEach(key => {
+            console.log('key:', key);
+            console.log('value:', recordsList[key]);
+            const recordSpan = `<span>Game: ${key}, score: ${recordsList[key]}<span>`;
+            recordsOpen.insertAdjacentHTML('afterbegin', recordSpan);
+        });
+    };
+};
+
+getLocalStorage();
