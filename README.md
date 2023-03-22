@@ -1,14 +1,13 @@
-# elsuppo-JSFEPRESCHOOL
-Private repository for @elsuppo
+## Tasks from stage 0 of The Rolling Scopes School
 
-### Portfolio (this video player)
-https://rolling-scopes-school.github.io/elsuppo-JSFEPRESCHOOL/portfolio/
+### Portfolio
+https://elsuppo.github.io/JSFEPRESCHOOL2022Q1/portfolio/
 
 ### Audio player
-https://rolling-scopes-school.github.io/elsuppo-JSFEPRESCHOOL/audio-player/
+https://elsuppo.github.io/JSFEPRESCHOOL2022Q1/audio-player/
 
 ### Image galery
-https://rolling-scopes-school.github.io/elsuppo-JSFEPRESCHOOL/image-galery/
+https://elsuppo.github.io/JSFEPRESCHOOL2022Q1/image-galery/
 
 ### Game snake
-https://rolling-scopes-school.github.io/elsuppo-JSFEPRESCHOOL/game-snake/
+https://elsuppo.github.io/JSFEPRESCHOOL2022Q1/game-snake/
